@@ -10,48 +10,14 @@ namespace PointOfSale
 {
     class MYSQLDatabaseConnection :Connector
     {  //establish , mysql database connection
-        private string _userName, _password, _companyId, _companyName, _companyPhoneNumber;
-       
+
+        private DatabaseColumn databaseColumn;
         MySqlConnection mysqlConnection = null;
         bool isOpen = false;
         string Query;
         private int _id, _type;
 
-      public string userName
-        {
-            get { return _userName; }
-            set { _userName = value; }
-        }
-        public string password
-        {
-            get { return _password; }
-            set { _password = value; }
-        }
-        public string companyId
-        {
-            get { return _companyId; }
-            set { _companyId = value; }
-        }
-        public string companyName
-        {
-            get { return _companyName; }
-            set { _companyName = value; }
-        }
-        public string companyPhoneNumber
-        {
-            get { return _companyPhoneNumber; }
-            set { _companyPhoneNumber = value; }
-        }
-        public int id
-        {
-            get { return id; }
-            set { _id = value; }
-         }
-        public int type
-        {
-            get { return _type; }
-            set { _type = value; }
-        }
+        
 
         public bool establish()
         {
@@ -72,11 +38,12 @@ namespace PointOfSale
                     connBuilder.OldGuids = true;
 
                 mysqlConnection = new MySqlConnection(connBuilder.ConnectionString);
-                    mysqlConnection.Open();
+                
                 isOpen = true;
             }
             catch(Exception e)
             {
+                MainWindow.TaskBar = e.ToString();
                 isOpen = false;
             }
             return isOpen;
@@ -85,8 +52,10 @@ namespace PointOfSale
         public Boolean CheckLogin()
         {/*check user name and password is correct*/
             try {
-                Query = " Select Count(*),value,id From  login where USERname = '" + _userName + "' and password = '" +_password + "'";
+                DatabaseColumn databaseColumn = new DatabaseColumn();
 
+                Query = " Select Count(*),type,user_id,counter_id From  user where user_name = '" + this.databaseColumn.user_name + "' and password = '" +this.databaseColumn.password + "'";
+                mysqlConnection.Open();
                 MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 reader.Read();
@@ -94,8 +63,7 @@ namespace PointOfSale
 
                 if (reader["Count(*)"].ToString() == "1")
                 {
-                    id = int.Parse(reader["id"].ToString());
-                    type = int.Parse(reader["value"].ToString());
+                    MainWindow.TaskBar = "hi " +this.databaseColumn.user_name;
                     return true;
                 }
                 else
@@ -107,6 +75,7 @@ namespace PointOfSale
             }
             catch (Exception e)
             {
+               
                 return false;
             }
            
@@ -116,17 +85,242 @@ namespace PointOfSale
         public bool InsertCompanyDetails()
         {/*insert company details into database*/
             try {
-                Query = "INSERT INTO `company` (`company_id`, `company_name`, `phone`)  VALUES ('" + this._companyId + "','" + this._companyName + "','" + this._companyPhoneNumber + "')";
+                Query = "INSERT INTO `company` (`company_name`, `company_address`, `company_phone_no`,`company_id`)  VALUES ('" + this.databaseColumn.company_name + "','" + this.databaseColumn.company_address + "','" + this.databaseColumn.company_phone_no + "','"+this.databaseColumn.company_id+"')";
+                mysqlConnection.Open();
                 MySqlCommand command = new MySqlCommand(Query, mysqlConnection);
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
                 mysqlConnection.Close();
+                MainWindow.TaskBar = databaseColumn.company_name+" , " + databaseColumn.company_address+" , " + databaseColumn.company_phone_no + " and " + databaseColumn.company_id + "-> insert complete";
+                return true;
 
-            return true;
+                 }catch(Exception e)
+                {
+                MainWindow.TaskBar = e.ToString();
+                return false;
+                }
+        }
+
+        public List<DatabaseColumn> SearchCompanyWithName()
+        {
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try {
+                
+
+                Query = " Select * from `company` where `company_name` like '" + this.databaseColumn.company_name + "%' ";
+                mysqlConnection.Open();
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                        company_name = reader["company_name"].ToString(),
+                        company_address = reader["company_address"].ToString(),
+                        company_phone_no = reader["company_phone_no"].ToString(),
+                        company_id = reader["company_id"].ToString()
+                    }
+
+                        );
+                }
+
+                return list;
             }catch(Exception e)
             {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+        }
+        public List<DatabaseColumn> SearchCompanyWithAddress()
+        {
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try
+            {
+
+
+                Query = " Select * from `company` where `company_address` like '" + this.databaseColumn.company_address + "%' ";
+                mysqlConnection.Open();
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                        company_name = reader["company_name"].ToString(),
+                        company_address = reader["company_address"].ToString(),
+                        company_phone_no = reader["company_phone_no"].ToString(),
+                        company_id =reader["company_id"].ToString()
+                    }
+
+                        );
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+        }
+        public List<DatabaseColumn> SearchCompanyWithPhoneNo()
+        {
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try
+            {
+
+
+                Query = " Select * from `company` where `company_phone_no` like '" + this.databaseColumn.company_phone_no + "%' ";
+                mysqlConnection.Open();
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                        company_name = reader["company_name"].ToString(),
+                        company_address = reader["company_address"].ToString(),
+                        company_phone_no = reader["company_phone_no"].ToString(),
+                        company_id =reader["company_id"].ToString()
+                    }
+
+                        );
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+        }
+        public List<DatabaseColumn> SearchCompanyWithId()
+        {
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try
+            {
+
+
+                Query = " Select * from `company` where `company_id` like '" + this.databaseColumn.company_id + "%' ";
+                mysqlConnection.Open();
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                        company_name = reader["company_name"].ToString(),
+                        company_address = reader["company_address"].ToString(),
+                        company_phone_no = reader["company_phone_no"].ToString(),
+                        company_id =reader["company_id"].ToString()
+                    }
+
+                        );
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+        }
+        public bool InsertCategoryDetails()
+        {
+            /*insert company details into database*/
+            try
+            {
+                Query = "INSERT INTO `category` (`category_name`, `cotegory_id`)  VALUES ('" + this.databaseColumn.category_name + "','" + this.databaseColumn.category_id + "')";
+                mysqlConnection.Open();
+                MySqlCommand command = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                mysqlConnection.Close();
+                MainWindow.TaskBar = databaseColumn.category_name+" and "+databaseColumn.category_id+" -> insert complete";
+                return true;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
                 return false;
             }
+
+        }
+        public List<DatabaseColumn> SearchCategoryWithName()
+        {
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try
+            {
+
+
+                Query = " Select * from `category` where `category_name` like '" + this.databaseColumn.category_name + "%' ";
+                mysqlConnection.Open();
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                        category_name = reader["category_name"].ToString(),
+                        category_id = reader["cotegory_id"].ToString()
+                        
+                    }
+
+                        );
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+        }
+
+        public List<DatabaseColumn> SearchCategoryWithId()
+        {
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try
+            {
+
+
+                Query = " Select * from `category` where `cotegory_id` like '" + this.databaseColumn.category_id + "%' ";
+                mysqlConnection.Open();
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                        category_name = reader["category_name"].ToString(),
+                        category_id = reader["cotegory_id"].ToString()
+
+                    }
+
+                        );
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+        }
+
+        public void SetData(DatabaseColumn _databaseColumn)
+        {
+            this.databaseColumn = _databaseColumn;
         }
 
     }

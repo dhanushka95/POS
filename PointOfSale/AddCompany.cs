@@ -12,29 +12,93 @@ namespace PointOfSale
 {
     public partial class AddCompany : Form
     {
-        public AddCompany()
+        private DataGridView mDgv;
+
+        public AddCompany(DataGridView dgv)
         {
             InitializeComponent();
+            this.mDgv = dgv;
+            MainWindow.TaskBar = "open Company Add window";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {   // Add company details into database
-            Connector connector= new MYSQLDatabaseConnection();
-            connector.establish();
-            connector.companyId=txtCompanyId.Text.ToString();
-            connector.companyName=txtCompayName.Text.ToString();
-            connector.companyPhoneNumber=txtCompanyPhoneNumber.Text.ToString();
+            DatabaseColumn databaseColumn = new DatabaseColumn();
 
-            if (connector.InsertCompanyDetails()==true)
+            Connector connector= new MYSQLDatabaseConnection();
+            
+           
+            databaseColumn.company_name=txtCompayName.Text.ToString();
+            databaseColumn.company_phone_no=txtCompanyPhoneNumber.Text.ToString();
+            databaseColumn.company_address = txtCompanyAddress.Text.ToString();
+            databaseColumn.company_id = txtCompanyId.Text.ToString();
+            connector.SetData(databaseColumn);
+
+            if (connector.establish()==true &&connector.InsertCompanyDetails()==true)
             {
-                MessageBox.Show("add Compleat");
-                txtCompanyId.Clear();
+                
+
+                //create database column list with data
+                var list = new List<DatabaseColumn>()
+               {
+               new DatabaseColumn { company_name = txtCompayName.Text.ToString(),company_phone_no =txtCompanyPhoneNumber.Text.ToString(),company_address=txtCompanyAddress.Text.ToString(),company_id=txtCompanyId.Text.ToString() }
+           
+                };
+
+                CombineDataGridView combineDataGridView = new CombineDataGridView();
+                combineDataGridView.SetDataGridViewList(list, mDgv);//connect main window datagridview
+
+                MessageBox.Show("Compleat");
+                
                 txtCompanyPhoneNumber.Clear();
                 txtCompayName.Clear();
+                txtCompanyAddress.Clear();
+                txtCompanyId.Clear();
             }
             else
             {
-                MessageBox.Show("data insert error");
+                MessageBox.Show("operation error");
+            }
+        }
+
+        private void AddCompany_Load(object sender, EventArgs e)
+        {
+            btnAdd.Enabled = false;
+        }
+
+        private void txtCompayName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCompanyAddress.Text.ToString()!=""&& txtCompanyPhoneNumber.Text.ToString() != "" && txtCompayName.Text.ToString() != "" && txtCompanyId.Text.ToString()!="")
+            {
+                btnAdd.Enabled = true;
+            }
+            else
+            {
+                btnAdd.Enabled = false;
+            }
+        }
+
+        private void txtCompanyPhoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCompanyAddress.Text.ToString() != "" && txtCompanyPhoneNumber.Text.ToString() != "" && txtCompayName.Text.ToString() != "")
+            {
+                btnAdd.Enabled = true;
+            }
+            else
+            {
+                btnAdd.Enabled = false;
+            }
+        }
+
+        private void txtCompanyAddress_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCompanyAddress.Text.ToString() != "" && txtCompanyPhoneNumber.Text.ToString() != "" && txtCompayName.Text.ToString() != "")
+            {
+                btnAdd.Enabled = true;
+            }
+            else
+            {
+                btnAdd.Enabled = false;
             }
         }
     }

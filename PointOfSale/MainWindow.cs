@@ -15,7 +15,10 @@ namespace PointOfSale
         public MainWindow()
         {
             InitializeComponent();
+            timerTaskBar.Start();
         }
+        public static string TaskBar = "--------- Start ---------";
+        private string currentTaskBar="";
         private bool isCollapsedStock=true, isCollapsedCompany= true, isCollapsedProduct = true;
         private void button7_Click(object sender, EventArgs e)
         {
@@ -81,13 +84,56 @@ namespace PointOfSale
 
         private void btnCompanyAdd_Click(object sender, EventArgs e)
         {
-            AddCompany addCompany = new AddCompany();
+            AddCompany addCompany = new AddCompany(this.dgv);
             addCompany.Show();
+         
+            
+            
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
             timerProduct.Start();
+        }
+
+        private void btnAddCategory_Click(object sender, EventArgs e)
+        {
+            AddCategory addCategory = new AddCategory(this.dgv);
+            addCategory.Show();
+        }
+
+        private void timerTaskBar_Tick(object sender, EventArgs e)
+        {
+            if (currentTaskBar != TaskBar)
+            {
+                txtTaskBar.AppendText(TaskBar+"\n");
+                TaskBar="";
+            }
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            flowLayoutPanel1.HorizontalScroll.Visible = false;
+            
+            
+        }
+
+        private void btnCompanyRemove_Click(object sender, EventArgs e)
+        {
+            RemoveCompany removeCompany = new RemoveCompany(this.dgv);
+            removeCompany.Show();
+        }
+
+        private void btnCompanyChange_Click(object sender, EventArgs e)
+        {
+            ChangeCompany changeCompany = new ChangeCompany(this.dgv);
+            changeCompany.Show();
+        }
+
+        private void btnChangeCategory_Click(object sender, EventArgs e)
+        {
+            ChangeCategory changeCategory = new ChangeCategory(this.dgv);
+            changeCategory.Show();
         }
 
         private void timerProduct_Tick(object sender, EventArgs e)
@@ -119,6 +165,11 @@ namespace PointOfSale
         private void btnCompany_Click(object sender, EventArgs e)
         {
             timerCompany.Start();
+            
         }
+
+      
+        
+
     }
 }

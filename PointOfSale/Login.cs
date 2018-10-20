@@ -28,9 +28,12 @@ namespace PointOfSale
                 prograsbarLogin.Value = 50;
 
                 Connector databaseConnection = new MYSQLDatabaseConnection();
+                DatabaseColumn databaseColumn = new DatabaseColumn();
 
-                databaseConnection.userName=txtUserName.Text.ToString();
-                databaseConnection.password=txtPassword.Text.ToString();
+                databaseColumn.user_name=txtUserName.Text.ToString();
+                databaseColumn.password=txtPassword.Text.ToString();
+
+                databaseConnection.SetData(databaseColumn);
 
                 prograsbarLogin.Value = 80;
 

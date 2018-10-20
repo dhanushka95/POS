@@ -62,7 +62,21 @@
     <Compile Include="AddCompany.Designer.cs">
       <DependentUpon>AddCompany.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangeCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeCategory.Designer.cs">
+      <DependentUpon>ChangeCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeCompany.Designer.cs">
+      <DependentUpon>ChangeCompany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connector.cs" />
+    <Compile Include="DatabaseColumn.cs" />
+    <Compile Include="MainDataGridView.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +98,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoveCompany.Designer.cs">
+      <DependentUpon>RemoveCompany.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServerConfiguration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +118,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddCompany.resx">
       <DependentUpon>AddCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeCategory.resx">
+      <DependentUpon>ChangeCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeCompany.resx">
+      <DependentUpon>ChangeCompany.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -118,6 +144,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RemoveCompany.resx">
+      <DependentUpon>RemoveCompany.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServerConfiguration.resx">
       <DependentUpon>ServerConfiguration.cs</DependentUpon>
     </EmbeddedResource>

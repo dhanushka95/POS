@@ -14,41 +14,15 @@ namespace PointOfSale
         bool CheckLogin();
      
         bool InsertCompanyDetails();
+        bool InsertCategoryDetails();
+        void SetData(DatabaseColumn _databaseColumn);
+        List<DatabaseColumn> SearchCompanyWithName();
+        List<DatabaseColumn> SearchCompanyWithAddress();
+        List<DatabaseColumn> SearchCompanyWithPhoneNo();
+        List<DatabaseColumn> SearchCompanyWithId();
+        List<DatabaseColumn> SearchCategoryWithName();
+        List<DatabaseColumn> SearchCategoryWithId();
 
-        string userName
-        {
-            get;
-            set;
-        }
-        string password
-        {
-            get;
-            set;
-        }
-        string companyId
-        {
-            get;
-            set;
-        }
-        string companyName
-        {
-            get;
-            set;
-        }
-        string companyPhoneNumber
-        {
-            get;
-            set;
-        }
-        int id
-        {
-            get;
-            set;
-        }
-        int type
-        {
-            get;
-            set;
-        }
+
     }
 }
