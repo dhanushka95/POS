@@ -19,7 +19,7 @@ namespace PointOfSale
 
         private void btnSet_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Sure","Update it?",MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Are you Sure update Server configuration?","Veryfy",MessageBoxButtons.YesNo);
             /*Confirm user want yes or no*/
             if (dialogResult==DialogResult.Yes) {
 

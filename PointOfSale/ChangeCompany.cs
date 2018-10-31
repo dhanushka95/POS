@@ -13,7 +13,7 @@ namespace PointOfSale
     public partial class ChangeCompany : Form
     {
         private DataGridView mDgv;
-        private string Check_RedioButton = "name";
+        
         public ChangeCompany(DataGridView dgv)
         {
             InitializeComponent();
@@ -21,15 +21,21 @@ namespace PointOfSale
             MainWindow.TaskBar = "open Company change window";
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+     
+
+        private void ChangeCompany_Load(object sender, EventArgs e)
         {
+            btnChange.Enabled = false;
+            redioBtnCompanyName.Checked = true;
+        }
 
-
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
             if (txtSearch.Text != "")
             {
 
                 DatabaseColumn databaseColumn = new DatabaseColumn();
-
+                List<DatabaseColumn> list = new List<DatabaseColumn>();
                 Connector connector = new MYSQLDatabaseConnection();
                 connector.establish();
 
@@ -38,39 +44,129 @@ namespace PointOfSale
                 {
                     databaseColumn.company_name = txtSearch.Text.ToString();
                     connector.SetData(databaseColumn);
-                    var list = connector.SearchCompanyWithName();
+                    list = connector.SearchCompanyWithName();
                     combineDataGridView.SetDataGridViewList(list, mDgv);//connect main window datagridview
+
                 }
                 else if (redioBtnCompanyAddress.Checked == true)
                 {
                     databaseColumn.company_address = txtSearch.Text.ToString();
                     connector.SetData(databaseColumn);
-                    var list = connector.SearchCompanyWithAddress();
+                    list = connector.SearchCompanyWithAddress();
                     combineDataGridView.SetDataGridViewList(list, mDgv);
                 }
                 else if (redioBtnCompanyPhoneNumber.Checked == true)
                 {
                     databaseColumn.company_phone_no = txtSearch.Text.ToString();
                     connector.SetData(databaseColumn);
-                    var list = connector.SearchCompanyWithPhoneNo();
+                    list = connector.SearchCompanyWithPhoneNo();
                     combineDataGridView.SetDataGridViewList(list, mDgv);
                 }
                 else if (redioBtnCompanyId.Checked == true)
                 {
                     databaseColumn.company_id = txtSearch.Text.ToString();
                     connector.SetData(databaseColumn);
-                    var list = connector.SearchCompanyWithId();
+                    list = connector.SearchCompanyWithId();
                     combineDataGridView.SetDataGridViewList(list, mDgv);
+                }
+
+
+
+                if (list.Count > 0)
+                {
+                    txtCompanyAddress.Text = list[0].company_address;
+                    txtCompanyId.Text = list[0].company_id;
+                    txtCompanyName.Text = list[0].company_name;
+                    txtCompanyPhoneNumber.Text = list[0].company_phone_no;
+                }
+                else
+                {
+                    txtCompanyAddress.Clear();
+                    txtCompanyId.Clear();
+                    txtCompanyName.Clear();
+                    txtCompanyPhoneNumber.Clear();
                 }
             }
 
 
         }
 
-        private void ChangeCompany_Load(object sender, EventArgs e)
+        private void btnChange_Click(object sender, EventArgs e)
         {
-            btnChange.Enabled = false;
-            redioBtnCompanyName.Checked = true;
+            DialogResult dialogResult = MessageBox.Show("Are you Sure update company details?", "Veryfy", MessageBoxButtons.YesNo);
+            
+            if (dialogResult == DialogResult.Yes)
+            {
+
+                /*catch update details into databaseColumn*/
+                DatabaseColumn updateDatabaseColumn = new DatabaseColumn();
+                updateDatabaseColumn.company_id = txtCompanyId.Text.ToString();
+                updateDatabaseColumn.company_name = txtCompanyName.Text.ToString();
+                updateDatabaseColumn.company_address = txtCompanyAddress.Text.ToString();
+                updateDatabaseColumn.company_phone_no = txtCompanyPhoneNumber.Text.ToString();
+
+
+
+                Connector connector = new MYSQLDatabaseConnection();
+                connector.establish();
+                connector.SetData(updateDatabaseColumn);
+
+                if (connector.ChangeCompany() == true)
+                {
+                    MessageBox.Show("Update compliete");
+
+                    /*refresh main data grid view and show update company deteils*/
+                    redioBtnCompanyId.Checked = true;
+                    txtSearch.Text = txtCompanyId.Text;
+                    btnSearch.PerformClick();
+               
+                }
+                else
+                {
+                    MessageBox.Show("Try again");
+                }
+            }
+
+        }
+
+        private void txtCompanyName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCompanyAddress.Text != "" && txtCompanyId.Text != "" && txtCompanyName.Text != "" && txtCompanyPhoneNumber.Text != "")
+            {
+                btnChange.Enabled = true;
+            }
+            else
+            {
+                btnChange.Enabled = false;
+            }
+        
+        
+        }
+
+        private void txtCompanyPhoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCompanyAddress.Text != "" && txtCompanyId.Text != "" && txtCompanyName.Text != "" && txtCompanyPhoneNumber.Text != "")
+            {
+                btnChange.Enabled = true;
+            }
+            else
+            {
+                btnChange.Enabled = false;
+            }
+
+        }
+
+        private void txtCompanyAddress_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCompanyAddress.Text != "" && txtCompanyId.Text != "" && txtCompanyName.Text != "" && txtCompanyPhoneNumber.Text != "")
+            {
+                btnChange.Enabled = true;
+            }
+            else
+            {
+                btnChange.Enabled = false;
+            }
+
         }
     }
 }

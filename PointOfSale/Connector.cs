@@ -20,8 +20,12 @@ namespace PointOfSale
         List<DatabaseColumn> SearchCompanyWithAddress();
         List<DatabaseColumn> SearchCompanyWithPhoneNo();
         List<DatabaseColumn> SearchCompanyWithId();
+        bool ChangeCompany();
+        bool RemoveCompany();
         List<DatabaseColumn> SearchCategoryWithName();
         List<DatabaseColumn> SearchCategoryWithId();
+        bool ChangeCategory();
+        bool RemoveCategory();
 
 
     }

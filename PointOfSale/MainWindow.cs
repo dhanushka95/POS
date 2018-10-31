@@ -19,7 +19,7 @@ namespace PointOfSale
         }
         public static string TaskBar = "--------- Start ---------";
         private string currentTaskBar="";
-        private bool isCollapsedStock=true, isCollapsedCompany= true, isCollapsedProduct = true;
+        private bool isCollapsedStock=true, isCollapsedCompany= true, isCollapsedCategory = true,isCollapsedProduct=true;
         private void button7_Click(object sender, EventArgs e)
         {
 
@@ -91,9 +91,9 @@ namespace PointOfSale
             
         }
 
-        private void btnProduct_Click(object sender, EventArgs e)
+        private void btnCategory_Click(object sender, EventArgs e)
         {
-            timerProduct.Start();
+            timerCategory.Start();
         }
 
         private void btnAddCategory_Click(object sender, EventArgs e)
@@ -136,6 +136,23 @@ namespace PointOfSale
             changeCategory.Show();
         }
 
+        private void btnRemoveCategory_Click(object sender, EventArgs e)
+        {
+            RemoveCategory removeCategory = new RemoveCategory(this.dgv);
+            removeCategory.Show();
+        }
+
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+            timerProduct.Start();
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            AddProduct addProduct = new AddProduct(this.dgv);
+            addProduct.Show();
+        }
+
         private void timerProduct_Tick(object sender, EventArgs e)
         {
             if (isCollapsedProduct)
@@ -157,6 +174,32 @@ namespace PointOfSale
                 {
                     timerProduct.Stop();
                     isCollapsedProduct = true;
+
+                }
+            }
+        }
+
+        private void timerCategory_Tick(object sender, EventArgs e)
+        {
+            if (isCollapsedCategory)
+            {
+                panelCategory.Height += 10;
+                if (panelCategory.Size == panelCategory.MaximumSize)
+                {
+                    timerCategory.Stop();
+                    isCollapsedCategory = false;
+
+                }
+
+
+            }
+            else
+            {
+                panelCategory.Height -= 10;
+                if (panelCategory.Size == panelCategory.MinimumSize)
+                {
+                    timerCategory.Stop();
+                    isCollapsedCategory = true;
 
                 }
             }

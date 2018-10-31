@@ -104,6 +104,7 @@
             this.btnSearch.TabIndex = 9;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // redioBtnCompanyAddress
             // 
@@ -136,7 +137,6 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(354, 30);
             this.txtSearch.TabIndex = 0;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // txtCompanyName
             // 
@@ -146,6 +146,7 @@
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(362, 30);
             this.txtCompanyName.TabIndex = 19;
+            this.txtCompanyName.TextChanged += new System.EventHandler(this.txtCompanyName_TextChanged);
             // 
             // label4
             // 
@@ -215,6 +216,7 @@
             this.btnChange.TabIndex = 20;
             this.btnChange.Text = "Change";
             this.btnChange.UseVisualStyleBackColor = false;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // txtCompanyAddress
             // 
@@ -224,6 +226,7 @@
             this.txtCompanyAddress.Name = "txtCompanyAddress";
             this.txtCompanyAddress.Size = new System.Drawing.Size(362, 89);
             this.txtCompanyAddress.TabIndex = 18;
+            this.txtCompanyAddress.TextChanged += new System.EventHandler(this.txtCompanyAddress_TextChanged);
             // 
             // txtCompanyId
             // 
@@ -241,6 +244,7 @@
             this.txtCompanyPhoneNumber.Name = "txtCompanyPhoneNumber";
             this.txtCompanyPhoneNumber.Size = new System.Drawing.Size(362, 30);
             this.txtCompanyPhoneNumber.TabIndex = 16;
+            this.txtCompanyPhoneNumber.TextChanged += new System.EventHandler(this.txtCompanyPhoneNumber_TextChanged);
             // 
             // ChangeCompany
             // 

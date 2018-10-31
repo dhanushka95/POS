@@ -1,6 +1,6 @@
 ﻿namespace PointOfSale
 {
-    partial class ChangeCategory
+    partial class RemoveCategory
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.txtCategoryName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCategoryId = new System.Windows.Forms.TextBox();
             this.groupBoxCompanyRemove = new System.Windows.Forms.GroupBox();
             this.redioBtnCategoryId = new System.Windows.Forms.RadioButton();
             this.redioBtnCategoryName = new System.Windows.Forms.RadioButton();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.txtCategoryName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnChange = new System.Windows.Forms.Button();
-            this.txtCategoryId = new System.Windows.Forms.TextBox();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.groupBoxCompanyRemove.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // txtCategoryName
+            // 
+            this.txtCategoryName.BackColor = System.Drawing.Color.White;
+            this.txtCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategoryName.Location = new System.Drawing.Point(208, 210);
+            this.txtCategoryName.Name = "txtCategoryName";
+            this.txtCategoryName.ReadOnly = true;
+            this.txtCategoryName.Size = new System.Drawing.Size(303, 30);
+            this.txtCategoryName.TabIndex = 30;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(8, 259);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(147, 29);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "Category Id";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(8, 211);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(194, 29);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Category Name";
+            // 
+            // txtCategoryId
+            // 
+            this.txtCategoryId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategoryId.Location = new System.Drawing.Point(208, 258);
+            this.txtCategoryId.Name = "txtCategoryId";
+            this.txtCategoryId.ReadOnly = true;
+            this.txtCategoryId.Size = new System.Drawing.Size(303, 30);
+            this.txtCategoryId.TabIndex = 29;
+            this.txtCategoryId.TextChanged += new System.EventHandler(this.txtCategoryId_TextChanged);
             // 
             // groupBoxCompanyRemove
             // 
@@ -49,10 +95,10 @@
             this.groupBoxCompanyRemove.Controls.Add(this.btnSearch);
             this.groupBoxCompanyRemove.Controls.Add(this.txtSearch);
             this.groupBoxCompanyRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBoxCompanyRemove.Location = new System.Drawing.Point(2, 3);
+            this.groupBoxCompanyRemove.Location = new System.Drawing.Point(3, 2);
             this.groupBoxCompanyRemove.Name = "groupBoxCompanyRemove";
             this.groupBoxCompanyRemove.Size = new System.Drawing.Size(508, 195);
-            this.groupBoxCompanyRemove.TabIndex = 13;
+            this.groupBoxCompanyRemove.TabIndex = 28;
             this.groupBoxCompanyRemove.TabStop = false;
             this.groupBoxCompanyRemove.Text = "Search";
             // 
@@ -105,87 +151,41 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(354, 30);
             this.txtSearch.TabIndex = 0;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // txtCategoryName
+            // btnRemove
             // 
-            this.txtCategoryName.BackColor = System.Drawing.Color.White;
-            this.txtCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategoryName.Location = new System.Drawing.Point(207, 211);
-            this.txtCategoryName.Name = "txtCategoryName";
-            this.txtCategoryName.Size = new System.Drawing.Size(303, 30);
-            this.txtCategoryName.TabIndex = 24;
-            this.txtCategoryName.TextChanged += new System.EventHandler(this.txtCategoryName_TextChanged);
+            this.btnRemove.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnRemove.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnRemove.FlatAppearance.BorderSize = 2;
+            this.btnRemove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRemove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.ForeColor = System.Drawing.Color.White;
+            this.btnRemove.Location = new System.Drawing.Point(380, 305);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(112, 44);
+            this.btnRemove.TabIndex = 34;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(7, 260);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 29);
-            this.label2.TabIndex = 27;
-            this.label2.Text = "Category Id";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(7, 212);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 29);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Category Name";
-            // 
-            // btnChange
-            // 
-            this.btnChange.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnChange.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnChange.FlatAppearance.BorderSize = 2;
-            this.btnChange.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
-            this.btnChange.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChange.ForeColor = System.Drawing.Color.White;
-            this.btnChange.Location = new System.Drawing.Point(388, 310);
-            this.btnChange.Name = "btnChange";
-            this.btnChange.Size = new System.Drawing.Size(103, 44);
-            this.btnChange.TabIndex = 25;
-            this.btnChange.Text = "Change";
-            this.btnChange.UseVisualStyleBackColor = false;
-            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
-            // 
-            // txtCategoryId
-            // 
-            this.txtCategoryId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategoryId.Location = new System.Drawing.Point(207, 259);
-            this.txtCategoryId.Name = "txtCategoryId";
-            this.txtCategoryId.ReadOnly = true;
-            this.txtCategoryId.Size = new System.Drawing.Size(303, 30);
-            this.txtCategoryId.TabIndex = 23;
-            // 
-            // ChangeCategory
+            // RemoveCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(515, 366);
+            this.ClientSize = new System.Drawing.Size(515, 364);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.txtCategoryName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnChange);
             this.Controls.Add(this.txtCategoryId);
             this.Controls.Add(this.groupBoxCompanyRemove);
-            this.Name = "ChangeCategory";
+            this.Name = "RemoveCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ChangeCategory";
-            this.Load += new System.EventHandler(this.ChangeCategory_Load);
+            this.Text = "Remove Category";
+            this.Load += new System.EventHandler(this.RemoveCategory_Load);
             this.groupBoxCompanyRemove.ResumeLayout(false);
             this.groupBoxCompanyRemove.PerformLayout();
             this.ResumeLayout(false);
@@ -195,15 +195,15 @@
 
         #endregion
 
+        private System.Windows.Forms.TextBox txtCategoryName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCategoryId;
         private System.Windows.Forms.GroupBox groupBoxCompanyRemove;
         private System.Windows.Forms.RadioButton redioBtnCategoryId;
         private System.Windows.Forms.RadioButton redioBtnCategoryName;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.TextBox txtCategoryName;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnChange;
-        private System.Windows.Forms.TextBox txtCategoryId;
+        private System.Windows.Forms.Button btnRemove;
     }
 }

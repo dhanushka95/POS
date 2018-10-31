@@ -10,46 +10,42 @@ using System.Windows.Forms;
 
 namespace PointOfSale
 {
-    public partial class ChangeCategory : Form
+    public partial class RemoveCategory : Form
     {
         private DataGridView mDgv;
         
-        public ChangeCategory(DataGridView dgv)
+        public RemoveCategory(DataGridView dgv)
         {
             InitializeComponent();
             this.mDgv = dgv;
-            MainWindow.TaskBar = "open Category change window";
+            MainWindow.TaskBar = "open Category remove window";
         }
 
-
-        private void ChangeCategory_Load(object sender, EventArgs e)
+        private void RemoveCategory_Load(object sender, EventArgs e)
         {
-            btnChange.Enabled = false;
+            btnRemove.Enabled = false;
             redioBtnCategoryName.Checked = true;
         }
 
+    
         private void btnSearch_Click(object sender, EventArgs e)
         {
             DatabaseColumn databaseColumn = new DatabaseColumn();
             List<DatabaseColumn> list = new List<DatabaseColumn>();
             CombineDataGridView combineDataGridView = new CombineDataGridView();
             if (txtSearch.Text != "")
-            {
-                this.Cursor = Cursors.WaitCursor;
-
-               
+            {            
 
                 Connector connector = new MYSQLDatabaseConnection();
                 connector.establish();
 
+              
                 if (redioBtnCategoryName.Checked == true)
                 {
                     databaseColumn.category_name = txtSearch.Text.ToString();
                     connector.SetData(databaseColumn);
                     list = connector.SearchCategoryWithName();
                     combineDataGridView.SetDataGridViewList(list, mDgv);//connect main window datagridview
-                  
-
                 }
                 else if (redioBtnCategoryId.Checked == true)
                 {
@@ -57,85 +53,72 @@ namespace PointOfSale
                     connector.SetData(databaseColumn);
                     list = connector.SearchCategoryWithId();
                     combineDataGridView.SetDataGridViewList(list, mDgv);
-                   
                 }
                 if (list.Count > 0)
                 {
                     txtCategoryId.Text = list[0].category_id;
                     txtCategoryName.Text = list[0].category_name;
+                   
                 }
                 else
                 {
                     txtCategoryName.Clear();
                     txtCategoryId.Clear();
+                    
                 }
 
             }
             else
             {
-                combineDataGridView.SetDataGridViewList(list, mDgv);
                 txtCategoryName.Clear();
                 txtCategoryId.Clear();
             }
 
-            this.Cursor=Cursors.Default;
         }
 
-        private void txtCategoryName_TextChanged(object sender, EventArgs e)
+        private void txtCategoryId_TextChanged(object sender, EventArgs e)
         {
-            if (txtCategoryId.Text.ToString() != "" && txtCategoryName.Text.ToString() != "")
+            if (txtCategoryId.Text!="")
             {
-                btnChange.Enabled = true;
+                btnRemove.Enabled = true;
             }
             else
             {
-                btnChange.Enabled = false;
+                btnRemove.Enabled = false;
             }
         }
 
-        private void btnChange_Click(object sender, EventArgs e)
+        private void btnRemove_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you Sure update category details?", "Veryfy", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Are you Sure delete category?", "Veryfy", MessageBoxButtons.YesNo);
 
             if (dialogResult == DialogResult.Yes)
             {
 
                 /*catch update details into databaseColumn*/
-                DatabaseColumn updateDatabaseColumn = new DatabaseColumn();
-                updateDatabaseColumn.category_id = txtCategoryId.Text.ToString();
-                updateDatabaseColumn.category_name = txtCategoryName.Text.ToString();
-              
-
+                DatabaseColumn deleteDatabaseColumn = new DatabaseColumn();
+                deleteDatabaseColumn.category_id = txtCategoryId.Text.ToString();
+                deleteDatabaseColumn.category_name = txtCategoryName.Text.ToString();
+                
                 Connector connector = new MYSQLDatabaseConnection();
                 connector.establish();
-                connector.SetData(updateDatabaseColumn);
+                connector.SetData(deleteDatabaseColumn);
 
-                if (connector.ChangeCategory() == true)
+                if (connector.RemoveCategory() == true)
                 {
-                    MessageBox.Show("Update compliete");
+                    MessageBox.Show("Delete compliete");
 
-                    /*refresh main data grid view and show update company deteils*/
+                    /*refresh main data grid view*/
                     redioBtnCategoryId.Checked = true;
                     txtSearch.Text = txtCategoryId.Text;
                     btnSearch.PerformClick();
+                    txtSearch.Clear();
 
                 }
                 else
                 {
                     MessageBox.Show("Try again");
                 }
-            }
-        }
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            if (txtCategoryId.Text!="" && txtCategoryName.Text!="")
-            {
-                btnChange.Enabled = true;
-            }
-            else
-            {
-                btnChange.Enabled = false;
             }
         }
     }

@@ -34,3 +34,5 @@ D:\Program\working\C#\POS\PointOfSale\obj\Debug\PointOfSale.csproj.GenerateResou
 D:\Program\working\C#\POS\PointOfSale\obj\Debug\PointOfSale.RemoveCompany.resources
 D:\Program\working\C#\POS\PointOfSale\obj\Debug\PointOfSale.ChangeCompany.resources
 D:\Program\working\C#\POS\PointOfSale\obj\Debug\PointOfSale.ChangeCategory.resources
+D:\Program\working\C#\POS\PointOfSale\obj\Debug\PointOfSale.RemoveCategory.resources
+D:\Program\working\C#\POS\PointOfSale\obj\Debug\PointOfSale.AddProduct.resources

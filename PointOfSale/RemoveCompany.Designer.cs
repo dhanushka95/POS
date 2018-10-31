@@ -39,11 +39,11 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.groupBoxCompanyRemove = new System.Windows.Forms.GroupBox();
+            this.redioBtnCompanyId = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.redioBtnCompanyId = new System.Windows.Forms.RadioButton();
             this.groupBoxCompanyRemove.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,6 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(354, 30);
             this.txtSearch.TabIndex = 0;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // txtCompanyPhoneNumber
             // 
@@ -75,6 +74,7 @@
             this.txtCompanyId.ReadOnly = true;
             this.txtCompanyId.Size = new System.Drawing.Size(354, 30);
             this.txtCompanyId.TabIndex = 2;
+            this.txtCompanyId.TextChanged += new System.EventHandler(this.txtCompanyId_TextChanged);
             // 
             // txtCompanyAddress
             // 
@@ -150,6 +150,7 @@
             this.btnSearch.TabIndex = 9;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnRemove
             // 
@@ -167,6 +168,7 @@
             this.btnRemove.TabIndex = 10;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // groupBoxCompanyRemove
             // 
@@ -184,6 +186,18 @@
             this.groupBoxCompanyRemove.TabIndex = 11;
             this.groupBoxCompanyRemove.TabStop = false;
             this.groupBoxCompanyRemove.Text = "Search";
+            // 
+            // redioBtnCompanyId
+            // 
+            this.redioBtnCompanyId.AutoSize = true;
+            this.redioBtnCompanyId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.redioBtnCompanyId.Location = new System.Drawing.Point(22, 149);
+            this.redioBtnCompanyId.Name = "redioBtnCompanyId";
+            this.redioBtnCompanyId.Size = new System.Drawing.Size(51, 29);
+            this.redioBtnCompanyId.TabIndex = 10;
+            this.redioBtnCompanyId.TabStop = true;
+            this.redioBtnCompanyId.Text = "Id";
+            this.redioBtnCompanyId.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -236,18 +250,6 @@
             this.label4.Size = new System.Drawing.Size(109, 29);
             this.label4.TabIndex = 15;
             this.label4.Text = "Address";
-            // 
-            // redioBtnCompanyId
-            // 
-            this.redioBtnCompanyId.AutoSize = true;
-            this.redioBtnCompanyId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.redioBtnCompanyId.Location = new System.Drawing.Point(22, 149);
-            this.redioBtnCompanyId.Name = "redioBtnCompanyId";
-            this.redioBtnCompanyId.Size = new System.Drawing.Size(51, 29);
-            this.redioBtnCompanyId.TabIndex = 10;
-            this.redioBtnCompanyId.TabStop = true;
-            this.redioBtnCompanyId.Text = "Id";
-            this.redioBtnCompanyId.UseVisualStyleBackColor = true;
             // 
             // RemoveCompany
             // 

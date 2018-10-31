@@ -38,7 +38,8 @@ namespace PointOfSale
                     connBuilder.OldGuids = true;
 
                 mysqlConnection = new MySqlConnection(connBuilder.ConnectionString);
-                
+                mysqlConnection.Open();
+               
                 isOpen = true;
             }
             catch(Exception e)
@@ -54,8 +55,8 @@ namespace PointOfSale
             try {
                 DatabaseColumn databaseColumn = new DatabaseColumn();
 
-                Query = " Select Count(*),type,user_id,counter_id From  user where user_name = '" + this.databaseColumn.user_name + "' and password = '" +this.databaseColumn.password + "'";
-                mysqlConnection.Open();
+                Query = " Select Count(*) From  user where user_name = '" + this.databaseColumn.user_name + "' and password = '" +this.databaseColumn.password + "'";
+                
                 MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 reader.Read();
@@ -86,7 +87,7 @@ namespace PointOfSale
         {/*insert company details into database*/
             try {
                 Query = "INSERT INTO `company` (`company_name`, `company_address`, `company_phone_no`,`company_id`)  VALUES ('" + this.databaseColumn.company_name + "','" + this.databaseColumn.company_address + "','" + this.databaseColumn.company_phone_no + "','"+this.databaseColumn.company_id+"')";
-                mysqlConnection.Open();
+                
                 MySqlCommand command = new MySqlCommand(Query, mysqlConnection);
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -108,7 +109,7 @@ namespace PointOfSale
                 
 
                 Query = " Select * from `company` where `company_name` like '" + this.databaseColumn.company_name + "%' ";
-                mysqlConnection.Open();
+                
                 MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -140,7 +141,7 @@ namespace PointOfSale
 
 
                 Query = " Select * from `company` where `company_address` like '" + this.databaseColumn.company_address + "%' ";
-                mysqlConnection.Open();
+                
                 MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -173,7 +174,7 @@ namespace PointOfSale
 
 
                 Query = " Select * from `company` where `company_phone_no` like '" + this.databaseColumn.company_phone_no + "%' ";
-                mysqlConnection.Open();
+                
                 MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -206,7 +207,7 @@ namespace PointOfSale
 
 
                 Query = " Select * from `company` where `company_id` like '" + this.databaseColumn.company_id + "%' ";
-                mysqlConnection.Open();
+                
                 MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -231,13 +232,59 @@ namespace PointOfSale
                 return list;
             }
         }
+        public bool ChangeCompany()
+        {          
+            try
+            {
+                Query = " update `company`  SET `company_name`='" + this.databaseColumn.company_name+ "' ,`company_address`='"+this.databaseColumn.company_address+ "' ,`company_phone_no`='"+this.databaseColumn.company_phone_no+ "' where `company_id`='" + this.databaseColumn.company_id+"' ";
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch(Exception e)
+            {
+                return false;
+                MainWindow.TaskBar = e.ToString();
+            }
+
+            
+        }
+        public bool RemoveCompany()
+        {
+            try
+            {
+                Query = "delete from `company` where `company_id`='"+this.databaseColumn.company_id+"'";
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+                MainWindow.TaskBar = e.ToString();
+            }
+        }
         public bool InsertCategoryDetails()
         {
             /*insert company details into database*/
             try
             {
                 Query = "INSERT INTO `category` (`category_name`, `cotegory_id`)  VALUES ('" + this.databaseColumn.category_name + "','" + this.databaseColumn.category_id + "')";
-                mysqlConnection.Open();
+                
                 MySqlCommand command = new MySqlCommand(Query, mysqlConnection);
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -260,7 +307,7 @@ namespace PointOfSale
 
 
                 Query = " Select * from `category` where `category_name` like '" + this.databaseColumn.category_name + "%' ";
-                mysqlConnection.Open();
+                
                 MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -293,7 +340,7 @@ namespace PointOfSale
 
 
                 Query = " Select * from `category` where `cotegory_id` like '" + this.databaseColumn.category_id + "%' ";
-                mysqlConnection.Open();
+                
                 MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -316,6 +363,55 @@ namespace PointOfSale
                 MainWindow.TaskBar = e.ToString();
                 return list;
             }
+        }
+
+        public bool ChangeCategory()
+        {
+
+            try
+            {
+                Query = " update `category`  SET `category_name`='" + this.databaseColumn.category_name + "' where `cotegory_id`='" + this.databaseColumn.category_id + "' ";
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+                MainWindow.TaskBar = e.ToString();
+            }
+
+
+        }
+       public bool RemoveCategory()
+        {
+            try
+            {
+                Query = "delete from `category` where `cotegory_id`='" + this.databaseColumn.category_id + "'";
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+                MainWindow.TaskBar = e.ToString();
+            }
+
         }
 
         public void SetData(DatabaseColumn _databaseColumn)

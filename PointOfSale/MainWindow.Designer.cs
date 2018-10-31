@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAccount = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -48,22 +48,30 @@
             this.btnCompanyRemove = new System.Windows.Forms.Button();
             this.btnCompanyAdd = new System.Windows.Forms.Button();
             this.btnCompany = new System.Windows.Forms.Button();
-            this.panelProduct = new System.Windows.Forms.Panel();
+            this.panelCategory = new System.Windows.Forms.Panel();
             this.btnProductSearch = new System.Windows.Forms.Button();
             this.btnRemoveCategory = new System.Windows.Forms.Button();
             this.btnChangeCategory = new System.Windows.Forms.Button();
             this.btnAddCategory = new System.Windows.Forms.Button();
+            this.btnCategory = new System.Windows.Forms.Button();
+            this.panelProduct = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnChangeProduct = new System.Windows.Forms.Button();
+            this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
             this.timerStock = new System.Windows.Forms.Timer(this.components);
             this.timerCompany = new System.Windows.Forms.Timer(this.components);
-            this.timerProduct = new System.Windows.Forms.Timer(this.components);
+            this.timerCategory = new System.Windows.Forms.Timer(this.components);
             this.dgv = new System.Windows.Forms.DataGridView();
             this.panelBottam = new System.Windows.Forms.Panel();
             this.txtTaskBar = new System.Windows.Forms.TextBox();
             this.timerTaskBar = new System.Windows.Forms.Timer(this.components);
+            this.timerProduct = new System.Windows.Forms.Timer(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.panelStock.SuspendLayout();
             this.panelCompany.SuspendLayout();
+            this.panelCategory.SuspendLayout();
             this.panelProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panelBottam.SuspendLayout();
@@ -80,6 +88,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnSetting);
             this.flowLayoutPanel1.Controls.Add(this.panelStock);
             this.flowLayoutPanel1.Controls.Add(this.panelCompany);
+            this.flowLayoutPanel1.Controls.Add(this.panelCategory);
             this.flowLayoutPanel1.Controls.Add(this.panelProduct);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -292,19 +301,19 @@
             this.btnCompany.UseVisualStyleBackColor = false;
             this.btnCompany.Click += new System.EventHandler(this.btnCompany_Click);
             // 
-            // panelProduct
+            // panelCategory
             // 
-            this.panelProduct.Controls.Add(this.btnProductSearch);
-            this.panelProduct.Controls.Add(this.btnRemoveCategory);
-            this.panelProduct.Controls.Add(this.btnChangeCategory);
-            this.panelProduct.Controls.Add(this.btnAddCategory);
-            this.panelProduct.Controls.Add(this.btnProduct);
-            this.panelProduct.Location = new System.Drawing.Point(3, 407);
-            this.panelProduct.MaximumSize = new System.Drawing.Size(302, 219);
-            this.panelProduct.MinimumSize = new System.Drawing.Size(302, 62);
-            this.panelProduct.Name = "panelProduct";
-            this.panelProduct.Size = new System.Drawing.Size(302, 62);
-            this.panelProduct.TabIndex = 6;
+            this.panelCategory.Controls.Add(this.btnProductSearch);
+            this.panelCategory.Controls.Add(this.btnRemoveCategory);
+            this.panelCategory.Controls.Add(this.btnChangeCategory);
+            this.panelCategory.Controls.Add(this.btnAddCategory);
+            this.panelCategory.Controls.Add(this.btnCategory);
+            this.panelCategory.Location = new System.Drawing.Point(3, 407);
+            this.panelCategory.MaximumSize = new System.Drawing.Size(302, 219);
+            this.panelCategory.MinimumSize = new System.Drawing.Size(302, 62);
+            this.panelCategory.Name = "panelCategory";
+            this.panelCategory.Size = new System.Drawing.Size(302, 62);
+            this.panelCategory.TabIndex = 6;
             // 
             // btnProductSearch
             // 
@@ -335,6 +344,7 @@
             this.btnRemoveCategory.TabIndex = 8;
             this.btnRemoveCategory.Text = "Remove";
             this.btnRemoveCategory.UseVisualStyleBackColor = false;
+            this.btnRemoveCategory.Click += new System.EventHandler(this.btnRemoveCategory_Click);
             // 
             // btnChangeCategory
             // 
@@ -368,6 +378,96 @@
             this.btnAddCategory.UseVisualStyleBackColor = false;
             this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
+            // btnCategory
+            // 
+            this.btnCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnCategory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCategory.FlatAppearance.BorderSize = 0;
+            this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategory.ForeColor = System.Drawing.Color.White;
+            this.btnCategory.Location = new System.Drawing.Point(0, 0);
+            this.btnCategory.Name = "btnCategory";
+            this.btnCategory.Size = new System.Drawing.Size(302, 61);
+            this.btnCategory.TabIndex = 5;
+            this.btnCategory.Text = "Category";
+            this.btnCategory.UseVisualStyleBackColor = false;
+            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
+            // 
+            // panelProduct
+            // 
+            this.panelProduct.Controls.Add(this.button1);
+            this.panelProduct.Controls.Add(this.button2);
+            this.panelProduct.Controls.Add(this.btnChangeProduct);
+            this.panelProduct.Controls.Add(this.btnAddProduct);
+            this.panelProduct.Controls.Add(this.btnProduct);
+            this.panelProduct.Location = new System.Drawing.Point(3, 475);
+            this.panelProduct.MaximumSize = new System.Drawing.Size(302, 219);
+            this.panelProduct.MinimumSize = new System.Drawing.Size(302, 62);
+            this.panelProduct.Name = "panelProduct";
+            this.panelProduct.Size = new System.Drawing.Size(302, 62);
+            this.panelProduct.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(0, 181);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(302, 40);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(0, 141);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(302, 40);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Remove";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // btnChangeProduct
+            // 
+            this.btnChangeProduct.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnChangeProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnChangeProduct.FlatAppearance.BorderSize = 0;
+            this.btnChangeProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangeProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeProduct.ForeColor = System.Drawing.Color.White;
+            this.btnChangeProduct.Location = new System.Drawing.Point(0, 101);
+            this.btnChangeProduct.Name = "btnChangeProduct";
+            this.btnChangeProduct.Size = new System.Drawing.Size(302, 40);
+            this.btnChangeProduct.TabIndex = 7;
+            this.btnChangeProduct.Text = "Change Product";
+            this.btnChangeProduct.UseVisualStyleBackColor = false;
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnAddProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddProduct.FlatAppearance.BorderSize = 0;
+            this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProduct.ForeColor = System.Drawing.Color.White;
+            this.btnAddProduct.Location = new System.Drawing.Point(0, 61);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(302, 40);
+            this.btnAddProduct.TabIndex = 6;
+            this.btnAddProduct.Text = "Add Product";
+            this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
             // btnProduct
             // 
             this.btnProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -393,10 +493,10 @@
             this.timerCompany.Interval = 15;
             this.timerCompany.Tick += new System.EventHandler(this.timerCompany_Tick);
             // 
-            // timerProduct
+            // timerCategory
             // 
-            this.timerProduct.Interval = 15;
-            this.timerProduct.Tick += new System.EventHandler(this.timerProduct_Tick);
+            this.timerCategory.Interval = 15;
+            this.timerCategory.Tick += new System.EventHandler(this.timerCategory_Tick);
             // 
             // dgv
             // 
@@ -407,39 +507,39 @@
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.ColumnHeadersHeight = 65;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Location = new System.Drawing.Point(325, 0);
             this.dgv.Name = "dgv";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Blue;
-            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Blue;
+            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv.RowTemplate.Height = 24;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(993, 673);
@@ -474,6 +574,11 @@
             // 
             this.timerTaskBar.Tick += new System.EventHandler(this.timerTaskBar_Tick);
             // 
+            // timerProduct
+            // 
+            this.timerProduct.Interval = 15;
+            this.timerProduct.Tick += new System.EventHandler(this.timerProduct_Tick);
+            // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -489,6 +594,7 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panelStock.ResumeLayout(false);
             this.panelCompany.ResumeLayout(false);
+            this.panelCategory.ResumeLayout(false);
             this.panelProduct.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panelBottam.ResumeLayout(false);
@@ -516,16 +622,23 @@
         private System.Windows.Forms.Button btnCompanyRemove;
         private System.Windows.Forms.Button btnCompanyAdd;
         private System.Windows.Forms.Timer timerCompany;
-        private System.Windows.Forms.Panel panelProduct;
+        private System.Windows.Forms.Panel panelCategory;
         private System.Windows.Forms.Button btnProductSearch;
         private System.Windows.Forms.Button btnRemoveCategory;
         private System.Windows.Forms.Button btnChangeCategory;
         private System.Windows.Forms.Button btnAddCategory;
-        private System.Windows.Forms.Button btnProduct;
-        private System.Windows.Forms.Timer timerProduct;
+        private System.Windows.Forms.Button btnCategory;
+        private System.Windows.Forms.Timer timerCategory;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.Panel panelBottam;
         private System.Windows.Forms.TextBox txtTaskBar;
         private System.Windows.Forms.Timer timerTaskBar;
+        private System.Windows.Forms.Panel panelProduct;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnChangeProduct;
+        private System.Windows.Forms.Button btnAddProduct;
+        private System.Windows.Forms.Button btnProduct;
+        private System.Windows.Forms.Timer timerProduct;
     }
 }
