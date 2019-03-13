@@ -182,6 +182,7 @@
             this.Controls.Add(this.btnChange);
             this.Controls.Add(this.txtCategoryId);
             this.Controls.Add(this.groupBoxCompanyRemove);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ChangeCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChangeCategory";

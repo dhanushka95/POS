@@ -18,7 +18,7 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.mDgv = dgv;
-            MainWindow.TaskBar = "open Company change window";
+            CommandLine commandLine = new CommandLine("ChangeCompany");
         }
 
      

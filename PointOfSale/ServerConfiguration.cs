@@ -15,6 +15,7 @@ namespace PointOfSale
         public ServerConfiguration()
         {
             InitializeComponent();
+            CommandLine commandLine = new CommandLine("ServerConfiguration");
         }
 
         private void btnSet_Click(object sender, EventArgs e)

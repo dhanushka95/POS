@@ -16,17 +16,29 @@ namespace PointOfSale
         bool InsertCompanyDetails();
         bool InsertCategoryDetails();
         void SetData(DatabaseColumn _databaseColumn);
+        List<DatabaseColumn> GetAllCompanyNameWithId();
         List<DatabaseColumn> SearchCompanyWithName();
         List<DatabaseColumn> SearchCompanyWithAddress();
         List<DatabaseColumn> SearchCompanyWithPhoneNo();
         List<DatabaseColumn> SearchCompanyWithId();
         bool ChangeCompany();
         bool RemoveCompany();
+        List<DatabaseColumn> GetAllCategoryNameWithId();
         List<DatabaseColumn> SearchCategoryWithName();
         List<DatabaseColumn> SearchCategoryWithId();
         bool ChangeCategory();
         bool RemoveCategory();
-
-
+        bool InsertProductDetails();
+        List<DatabaseColumn> GetAllProductNameWithId();
+        List<DatabaseColumn> GetProductNameForEachCompanyAndCategory();
+        DatabaseColumn GetProductDetails();
+        List<DatabaseColumn> GetCategoryNameForEachCompany();
+        List<DatabaseColumn> SearchProductNameWithCompanuAndCategoryName();
+        bool ChangeProductDetails();
+        bool RemoveProductDetails();
+        bool InsertStock();
+        DatabaseColumn SearchCompanyList(List<DatabaseColumn> databaseColumn, string SearchCompanyName);
+        DatabaseColumn SearchCategoryList(List<DatabaseColumn> databaseColumn, string SearchCategoryName);
+        DatabaseColumn SearchProductList(List<DatabaseColumn> databaseColumn, string SearchCategoryName);
     }
 }

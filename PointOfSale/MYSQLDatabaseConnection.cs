@@ -101,7 +101,37 @@ namespace PointOfSale
                 return false;
                 }
         }
+        public List<DatabaseColumn> GetAllCompanyNameWithId()
+        {
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try
+            {
 
+
+                Query = " SELECT * FROM `company` ORDER BY company_name ASC";
+
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                        company_name = reader["company_name"].ToString(),
+                        company_id = reader["company_id"].ToString()
+                    }
+
+                        );
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+        }
         public List<DatabaseColumn> SearchCompanyWithName()
         {
             List<DatabaseColumn> list = new List<DatabaseColumn>();
@@ -278,6 +308,100 @@ namespace PointOfSale
                 MainWindow.TaskBar = e.ToString();
             }
         }
+        public List<DatabaseColumn> GetAllCategoryNameWithId()
+        {
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try
+            {
+
+
+                Query = " SELECT * FROM `category` ORDER BY category_name ASC";
+
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                        category_name = reader["category_name"].ToString(),
+                        category_id = reader["cotegory_id"].ToString()
+                    }
+
+                        );
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+        }
+        public List<DatabaseColumn> GetCategoryNameForEachCompany()
+        {    /*you have to set company name into SetData after this can execute*/
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try
+            {
+
+
+                Query = " SELECT * FROM `product_details`,`company`,`category`  WHERE company.company_id=product_details.company_id AND category.cotegory_id=product_details.cotegory_id AND company.company_id='" + this.databaseColumn.company_id+"'";
+
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                        category_name = reader["category_name"].ToString(),
+                        category_id = reader["cotegory_id"].ToString()
+                    }
+
+                        );
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+        }
+        public List<DatabaseColumn> GetProductNameForEachCompanyAndCategory()
+        {
+            /*you have to set company name amd category name into SetData after this can execute*/
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try
+            {
+
+
+                Query = " SELECT * FROM `product_details`,`company`,`category`  WHERE company.company_id=product_details.company_id AND category.cotegory_id=product_details.cotegory_id AND company.company_id='" + this.databaseColumn.company_id + "' AND category.cotegory_id='" + this.databaseColumn.category_id+"'";
+
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                        product_name = reader["product_name"].ToString(),
+                        product_id = reader["product_id"].ToString()
+                    }
+
+                        );
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+        }
         public bool InsertCategoryDetails()
         {
             /*insert company details into database*/
@@ -390,7 +514,7 @@ namespace PointOfSale
 
 
         }
-       public bool RemoveCategory()
+        public bool RemoveCategory()
         {
             try
             {
@@ -414,9 +538,252 @@ namespace PointOfSale
 
         }
 
+        public bool InsertProductDetails()
+        {
+            try
+            {
+                Query = "INSERT INTO `product_details` (`company_id`, `cotegory_id`, `product_name`,`product_id`,`minimum_quantity`,`sell_price`,`product_discount_price`)  VALUES ('" + this.databaseColumn.company_id + "','" + this.databaseColumn.category_id + "','" + this.databaseColumn.product_name + "','" + this.databaseColumn.product_id + "','" + this.databaseColumn.minimum_quantity + "','" + this.databaseColumn.sell_price + "','" + this.databaseColumn.product_discount_price + "')";
+
+                MySqlCommand command = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                mysqlConnection.Close();
+                MainWindow.TaskBar = "\n"+databaseColumn.product_name + " , " + databaseColumn.product_id + " , " + databaseColumn.sell_price + " , " + databaseColumn.product_discount_price + " , " + databaseColumn.minimum_quantity + " , " + databaseColumn.company_name + "/" + databaseColumn.company_id + " and " + databaseColumn.category_name + " /" + databaseColumn.category_id + "-> insert complete";
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return false;
+            }
+        }
+        public List<DatabaseColumn> GetAllProductNameWithId()
+        {
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try
+            {
+
+
+                Query = "SELECT * FROM `product_details`";
+
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                       
+                        product_id = reader["product_id"].ToString(),
+                        product_name = reader["product_name"].ToString()
+                      
+
+                    }
+
+                        );
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+        }
+        public List<DatabaseColumn> SearchProductNameWithCompanuAndCategoryName()
+        {
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try
+            {
+
+
+                Query = "SELECT * FROM `product_details` ,`company`,`category` WHERE company.company_name ='" + this.databaseColumn.company_name+ "' and category.category_name ='" + this.databaseColumn.category_name + "' and product_details.company_id=company.company_id and product_details.cotegory_id=category.cotegory_id ORDER BY `product_id` ASC";
+
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                        category_name = reader["category_name"].ToString(),
+                        category_id = reader["cotegory_id"].ToString(),
+                        company_id= reader["company_id"].ToString(),
+                        company_name= reader["company_name"].ToString(),
+                        product_id= reader["product_id"].ToString(),
+                        product_discount_price=reader["product_discount_price"].ToString(),
+                        product_name= reader["product_name"].ToString(),
+                        sell_price= reader["sell_price"].ToString(),
+                        minimum_quantity= reader["minimum_quantity"].ToString()
+
+                    }
+
+                        );
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+        }
+        public DatabaseColumn GetProductDetails()
+        {
+
+           DatabaseColumn databaseColumn = new DatabaseColumn();
+            try
+            {
+
+
+                Query = "SELECT * FROM `product_details` ,`company`,`category` WHERE company.company_id='" + this.databaseColumn.company_id + "' and category.cotegory_id='" + this.databaseColumn.category_id + "' and product_details.product_id='" + this.databaseColumn.product_id+"' and product_details.company_id=company.company_id and product_details.cotegory_id=category.cotegory_id ORDER BY `product_id` ASC";
+
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    databaseColumn.category_name = reader["category_name"].ToString();
+                    databaseColumn.category_id = reader["cotegory_id"].ToString();
+                    databaseColumn.company_id = reader["company_id"].ToString();
+                    databaseColumn.company_name = reader["company_name"].ToString();
+                    databaseColumn.product_id = reader["product_id"].ToString();
+                    databaseColumn.product_discount_price = reader["product_discount_price"].ToString();
+                    databaseColumn.product_name = reader["product_name"].ToString();
+                    databaseColumn.sell_price = reader["sell_price"].ToString();
+                    databaseColumn.minimum_quantity = reader["minimum_quantity"].ToString();
+
+                }
+
+                        
+                
+
+                return databaseColumn;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return databaseColumn;
+            }
+        }
+        public bool RemoveProductDetails()
+        {
+            try
+            {
+                Query = "delete from `product_details` where `cotegory_id`='" + this.databaseColumn.category_id + "' and company_id='"+this.databaseColumn.company_id+"' and product_id='"+this.databaseColumn.product_id+"'";
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+                MainWindow.TaskBar = e.ToString();
+            }
+        }
+        public bool ChangeProductDetails()
+        {
+            try
+            {
+                Query = " update `product_details`  SET `product_name`='" + this.databaseColumn.product_name + "' ,`minimum_quantity`='"+this.databaseColumn.minimum_quantity+ "' ,`sell_price`='"+this.databaseColumn.sell_price+ "' ,`product_discount_price`='"+this.databaseColumn.product_discount_price+"' where `cotegory_id`='" + this.databaseColumn.category_id + "' and `company_id`='"+this.databaseColumn.company_id+ "' and `product_id`='"+this.databaseColumn.product_id+"' ";
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+                MainWindow.TaskBar = e.ToString();
+            }
+
+
+        }
+
+        public bool InsertStock() {
+            try
+            {
+                Query = "INSERT INTO `stock` (`E_D`, `product_id`, `barcode`,`stock_date`,`invoice_number`,`start_quantity`,`current_quantity`,`exp_date`,`get_price`)  VALUES ('" + this.databaseColumn.E_D + "','" + this.databaseColumn.product_id + "','" + this.databaseColumn.barcode + "','" + this.databaseColumn.stock_date + "','" + this.databaseColumn.invoice_number + "','" + this.databaseColumn.start_quantity + "','" + this.databaseColumn.start_quantity + "','" + this.databaseColumn.exp_date + "','" + this.databaseColumn.get_price + "')";
+
+                MySqlCommand command = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                mysqlConnection.Close();
+                MainWindow.TaskBar = "insert stock -->"+this.databaseColumn.product_name+" "+this.databaseColumn.category_name+" "+this.databaseColumn.company_name+" "+this.databaseColumn.stock_date+" "+this.databaseColumn.invoice_number+" "+this.databaseColumn.start_quantity+" "+this.databaseColumn.exp_date+" "+this.databaseColumn.get_price;
+                    return true;
+
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return false;
+            }
+
+        }
+
         public void SetData(DatabaseColumn _databaseColumn)
         {
             this.databaseColumn = _databaseColumn;
+        }
+
+       public DatabaseColumn SearchCompanyList(List<DatabaseColumn> databaseColumn, string SearchCompanyName)
+        {
+            DatabaseColumn result = new DatabaseColumn();
+            try {
+                result = databaseColumn.Find(x => x.company_name == SearchCompanyName);
+                return result;
+            }
+            catch(Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return result;
+            }
+            
+        }
+       public DatabaseColumn SearchCategoryList(List<DatabaseColumn> databaseColumn, string SearchCategoryName)
+        {
+            DatabaseColumn result = new DatabaseColumn();
+            try
+            {
+                result = databaseColumn.Find(x => x.category_name == SearchCategoryName);
+                return result;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return result;
+            }
+        }
+        public DatabaseColumn SearchProductList(List<DatabaseColumn> databaseColumn, string SearchProductName)
+        {
+            DatabaseColumn result = new DatabaseColumn();
+            try
+            {
+                result = databaseColumn.Find(x => x.product_name == SearchProductName);
+                return result;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return result;
+            }
         }
 
     }

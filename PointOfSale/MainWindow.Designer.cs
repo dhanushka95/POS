@@ -29,18 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAccount = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.btnSetting = new System.Windows.Forms.Button();
             this.panelStock = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnStockChange = new System.Windows.Forms.Button();
+            this.btnStockAdd = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panelCompany = new System.Windows.Forms.Panel();
             this.btnCompanySearch = new System.Windows.Forms.Button();
@@ -68,6 +67,13 @@
             this.txtTaskBar = new System.Windows.Forms.TextBox();
             this.timerTaskBar = new System.Windows.Forms.Timer(this.components);
             this.timerProduct = new System.Windows.Forms.Timer(this.components);
+            this.btnStockRemove = new System.Windows.Forms.Button();
+            this.panelSetting = new System.Windows.Forms.Panel();
+            this.btnAccountSetting = new System.Windows.Forms.Button();
+            this.btnServerSetting = new System.Windows.Forms.Button();
+            this.btnSystemSetting = new System.Windows.Forms.Button();
+            this.btnSetting = new System.Windows.Forms.Button();
+            this.timerSetting = new System.Windows.Forms.Timer(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.panelStock.SuspendLayout();
             this.panelCompany.SuspendLayout();
@@ -75,6 +81,7 @@
             this.panelProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panelBottam.SuspendLayout();
+            this.panelSetting.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -85,11 +92,11 @@
             this.flowLayoutPanel1.Controls.Add(this.btnAccount);
             this.flowLayoutPanel1.Controls.Add(this.btnSearch);
             this.flowLayoutPanel1.Controls.Add(this.button4);
-            this.flowLayoutPanel1.Controls.Add(this.btnSetting);
             this.flowLayoutPanel1.Controls.Add(this.panelStock);
             this.flowLayoutPanel1.Controls.Add(this.panelCompany);
             this.flowLayoutPanel1.Controls.Add(this.panelCategory);
             this.flowLayoutPanel1.Controls.Add(this.panelProduct);
+            this.flowLayoutPanel1.Controls.Add(this.panelSetting);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -138,61 +145,50 @@
             this.button4.Text = "Backup";
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // btnSetting
-            // 
-            this.btnSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnSetting.FlatAppearance.BorderSize = 0;
-            this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetting.ForeColor = System.Drawing.Color.White;
-            this.btnSetting.Location = new System.Drawing.Point(3, 204);
-            this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(302, 61);
-            this.btnSetting.TabIndex = 5;
-            this.btnSetting.Text = "Setting";
-            this.btnSetting.UseVisualStyleBackColor = false;
-            // 
             // panelStock
             // 
-            this.panelStock.Controls.Add(this.button7);
-            this.panelStock.Controls.Add(this.button6);
+            this.panelStock.Controls.Add(this.btnStockRemove);
+            this.panelStock.Controls.Add(this.btnStockChange);
+            this.panelStock.Controls.Add(this.btnStockAdd);
             this.panelStock.Controls.Add(this.button5);
-            this.panelStock.Location = new System.Drawing.Point(3, 271);
-            this.panelStock.MaximumSize = new System.Drawing.Size(302, 139);
+            this.panelStock.Location = new System.Drawing.Point(3, 204);
+            this.panelStock.MaximumSize = new System.Drawing.Size(302, 180);
             this.panelStock.MinimumSize = new System.Drawing.Size(302, 62);
             this.panelStock.Name = "panelStock";
             this.panelStock.Size = new System.Drawing.Size(302, 62);
             this.panelStock.TabIndex = 1;
             // 
-            // button7
+            // btnStockChange
             // 
-            this.button7.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(0, 101);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(302, 40);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btnStockChange.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnStockChange.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStockChange.FlatAppearance.BorderSize = 0;
+            this.btnStockChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockChange.ForeColor = System.Drawing.Color.White;
+            this.btnStockChange.Location = new System.Drawing.Point(0, 102);
+            this.btnStockChange.Name = "btnStockChange";
+            this.btnStockChange.Size = new System.Drawing.Size(302, 40);
+            this.btnStockChange.TabIndex = 7;
+            this.btnStockChange.Text = "Change";
+            this.btnStockChange.UseVisualStyleBackColor = false;
+            this.btnStockChange.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button6
+            // btnStockAdd
             // 
-            this.button6.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(0, 61);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(302, 40);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnStockAdd.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnStockAdd.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStockAdd.FlatAppearance.BorderSize = 0;
+            this.btnStockAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockAdd.ForeColor = System.Drawing.Color.White;
+            this.btnStockAdd.Location = new System.Drawing.Point(0, 62);
+            this.btnStockAdd.Name = "btnStockAdd";
+            this.btnStockAdd.Size = new System.Drawing.Size(302, 40);
+            this.btnStockAdd.TabIndex = 6;
+            this.btnStockAdd.Text = "Stock Add";
+            this.btnStockAdd.UseVisualStyleBackColor = false;
+            this.btnStockAdd.Click += new System.EventHandler(this.btnStockAdd_Click);
             // 
             // button5
             // 
@@ -203,7 +199,7 @@
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Location = new System.Drawing.Point(0, 0);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(302, 61);
+            this.button5.Size = new System.Drawing.Size(302, 62);
             this.button5.TabIndex = 5;
             this.button5.Text = "Stock";
             this.button5.UseVisualStyleBackColor = false;
@@ -216,7 +212,7 @@
             this.panelCompany.Controls.Add(this.btnCompanyRemove);
             this.panelCompany.Controls.Add(this.btnCompanyAdd);
             this.panelCompany.Controls.Add(this.btnCompany);
-            this.panelCompany.Location = new System.Drawing.Point(3, 339);
+            this.panelCompany.Location = new System.Drawing.Point(3, 272);
             this.panelCompany.MaximumSize = new System.Drawing.Size(302, 216);
             this.panelCompany.MinimumSize = new System.Drawing.Size(302, 62);
             this.panelCompany.Name = "panelCompany";
@@ -308,7 +304,7 @@
             this.panelCategory.Controls.Add(this.btnChangeCategory);
             this.panelCategory.Controls.Add(this.btnAddCategory);
             this.panelCategory.Controls.Add(this.btnCategory);
-            this.panelCategory.Location = new System.Drawing.Point(3, 407);
+            this.panelCategory.Location = new System.Drawing.Point(3, 340);
             this.panelCategory.MaximumSize = new System.Drawing.Size(302, 219);
             this.panelCategory.MinimumSize = new System.Drawing.Size(302, 62);
             this.panelCategory.Name = "panelCategory";
@@ -400,7 +396,7 @@
             this.panelProduct.Controls.Add(this.btnChangeProduct);
             this.panelProduct.Controls.Add(this.btnAddProduct);
             this.panelProduct.Controls.Add(this.btnProduct);
-            this.panelProduct.Location = new System.Drawing.Point(3, 475);
+            this.panelProduct.Location = new System.Drawing.Point(3, 408);
             this.panelProduct.MaximumSize = new System.Drawing.Size(302, 219);
             this.panelProduct.MinimumSize = new System.Drawing.Size(302, 62);
             this.panelProduct.Name = "panelProduct";
@@ -436,6 +432,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Remove";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnChangeProduct
             // 
@@ -451,6 +448,7 @@
             this.btnChangeProduct.TabIndex = 7;
             this.btnChangeProduct.Text = "Change Product";
             this.btnChangeProduct.UseVisualStyleBackColor = false;
+            this.btnChangeProduct.Click += new System.EventHandler(this.btnChangeProduct_Click);
             // 
             // btnAddProduct
             // 
@@ -507,39 +505,39 @@
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgv.ColumnHeadersHeight = 65;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Location = new System.Drawing.Point(325, 0);
             this.dgv.Name = "dgv";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgv.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Blue;
-            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Blue;
+            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgv.RowTemplate.Height = 24;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(993, 673);
@@ -579,6 +577,101 @@
             this.timerProduct.Interval = 15;
             this.timerProduct.Tick += new System.EventHandler(this.timerProduct_Tick);
             // 
+            // btnStockRemove
+            // 
+            this.btnStockRemove.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnStockRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStockRemove.FlatAppearance.BorderSize = 0;
+            this.btnStockRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockRemove.ForeColor = System.Drawing.Color.White;
+            this.btnStockRemove.Location = new System.Drawing.Point(0, 142);
+            this.btnStockRemove.Name = "btnStockRemove";
+            this.btnStockRemove.Size = new System.Drawing.Size(302, 40);
+            this.btnStockRemove.TabIndex = 8;
+            this.btnStockRemove.Text = "Remove";
+            this.btnStockRemove.UseVisualStyleBackColor = false;
+            this.btnStockRemove.Click += new System.EventHandler(this.btnStockRemove_Click);
+            // 
+            // panelSetting
+            // 
+            this.panelSetting.Controls.Add(this.btnAccountSetting);
+            this.panelSetting.Controls.Add(this.btnServerSetting);
+            this.panelSetting.Controls.Add(this.btnSystemSetting);
+            this.panelSetting.Controls.Add(this.btnSetting);
+            this.panelSetting.Location = new System.Drawing.Point(3, 476);
+            this.panelSetting.MaximumSize = new System.Drawing.Size(302, 180);
+            this.panelSetting.MinimumSize = new System.Drawing.Size(302, 62);
+            this.panelSetting.Name = "panelSetting";
+            this.panelSetting.Size = new System.Drawing.Size(302, 67);
+            this.panelSetting.TabIndex = 8;
+            // 
+            // btnAccountSetting
+            // 
+            this.btnAccountSetting.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnAccountSetting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccountSetting.FlatAppearance.BorderSize = 0;
+            this.btnAccountSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccountSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccountSetting.ForeColor = System.Drawing.Color.White;
+            this.btnAccountSetting.Location = new System.Drawing.Point(0, 147);
+            this.btnAccountSetting.Name = "btnAccountSetting";
+            this.btnAccountSetting.Size = new System.Drawing.Size(302, 40);
+            this.btnAccountSetting.TabIndex = 8;
+            this.btnAccountSetting.Text = "Account";
+            this.btnAccountSetting.UseVisualStyleBackColor = false;
+            // 
+            // btnServerSetting
+            // 
+            this.btnServerSetting.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnServerSetting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnServerSetting.FlatAppearance.BorderSize = 0;
+            this.btnServerSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnServerSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServerSetting.ForeColor = System.Drawing.Color.White;
+            this.btnServerSetting.Location = new System.Drawing.Point(0, 107);
+            this.btnServerSetting.Name = "btnServerSetting";
+            this.btnServerSetting.Size = new System.Drawing.Size(302, 40);
+            this.btnServerSetting.TabIndex = 7;
+            this.btnServerSetting.Text = "Server";
+            this.btnServerSetting.UseVisualStyleBackColor = false;
+            this.btnServerSetting.Click += new System.EventHandler(this.btnServerSetting_Click);
+            // 
+            // btnSystemSetting
+            // 
+            this.btnSystemSetting.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnSystemSetting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSystemSetting.FlatAppearance.BorderSize = 0;
+            this.btnSystemSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSystemSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSystemSetting.ForeColor = System.Drawing.Color.White;
+            this.btnSystemSetting.Location = new System.Drawing.Point(0, 67);
+            this.btnSystemSetting.Name = "btnSystemSetting";
+            this.btnSystemSetting.Size = new System.Drawing.Size(302, 40);
+            this.btnSystemSetting.TabIndex = 6;
+            this.btnSystemSetting.Text = "System";
+            this.btnSystemSetting.UseVisualStyleBackColor = false;
+            // 
+            // btnSetting
+            // 
+            this.btnSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnSetting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSetting.FlatAppearance.BorderSize = 0;
+            this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetting.ForeColor = System.Drawing.Color.White;
+            this.btnSetting.Location = new System.Drawing.Point(0, 0);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(302, 67);
+            this.btnSetting.TabIndex = 5;
+            this.btnSetting.Text = "Setting";
+            this.btnSetting.UseVisualStyleBackColor = false;
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+            // 
+            // timerSetting
+            // 
+            this.timerSetting.Interval = 15;
+            this.timerSetting.Tick += new System.EventHandler(this.timerSetting_Tick);
+            // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -599,6 +692,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panelBottam.ResumeLayout(false);
             this.panelBottam.PerformLayout();
+            this.panelSetting.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -611,11 +705,10 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panelStock;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnStockChange;
+        private System.Windows.Forms.Button btnStockAdd;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Timer timerStock;
-        private System.Windows.Forms.Button btnSetting;
         private System.Windows.Forms.Panel panelCompany;
         private System.Windows.Forms.Button btnCompanySearch;
         private System.Windows.Forms.Button btnCompanyChange;
@@ -640,5 +733,12 @@
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.Button btnProduct;
         private System.Windows.Forms.Timer timerProduct;
+        private System.Windows.Forms.Button btnStockRemove;
+        private System.Windows.Forms.Panel panelSetting;
+        private System.Windows.Forms.Button btnAccountSetting;
+        private System.Windows.Forms.Button btnServerSetting;
+        private System.Windows.Forms.Button btnSystemSetting;
+        private System.Windows.Forms.Button btnSetting;
+        private System.Windows.Forms.Timer timerSetting;
     }
 }

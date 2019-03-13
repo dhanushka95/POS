@@ -18,7 +18,7 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.mDgv = dgv;
-            MainWindow.TaskBar = "open Category change window";
+            CommandLine commandLine = new CommandLine("ChangeCategory");
         }
 
 
@@ -35,7 +35,7 @@ namespace PointOfSale
             CombineDataGridView combineDataGridView = new CombineDataGridView();
             if (txtSearch.Text != "")
             {
-                this.Cursor = Cursors.WaitCursor;
+                
 
                
 
@@ -78,7 +78,7 @@ namespace PointOfSale
                 txtCategoryId.Clear();
             }
 
-            this.Cursor=Cursors.Default;
+            
         }
 
         private void txtCategoryName_TextChanged(object sender, EventArgs e)

@@ -19,10 +19,11 @@ namespace PointOfSale
         }
         public static string TaskBar = "--------- Start ---------";
         private string currentTaskBar="";
-        private bool isCollapsedStock=true, isCollapsedCompany= true, isCollapsedCategory = true,isCollapsedProduct=true;
+        private bool isCollapsedStock=true, isCollapsedCompany= true, isCollapsedCategory = true,isCollapsedProduct=true, isCollapsedSetting = true;
         private void button7_Click(object sender, EventArgs e)
         {
-
+            ChangeStock changeStock = new ChangeStock(this.dgv);
+            changeStock.Show();
         }
 
         private void timerStock_Tick(object sender, EventArgs e)
@@ -151,6 +152,67 @@ namespace PointOfSale
         {
             AddProduct addProduct = new AddProduct(this.dgv);
             addProduct.Show();
+        }
+
+        private void btnChangeProduct_Click(object sender, EventArgs e)
+        {
+            ChangeProduct changeProduct = new ChangeProduct(this.dgv);
+            changeProduct.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RemoveProduct RemoveProduct = new RemoveProduct(this.dgv);
+            RemoveProduct.Show();
+        }
+
+        private void btnStockAdd_Click(object sender, EventArgs e)
+        {
+            AddStock addStock = new AddStock(this.dgv);
+            addStock.Show();
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            timerSetting.Start();
+        }
+
+        private void timerSetting_Tick(object sender, EventArgs e)
+        {
+            if (isCollapsedSetting)
+            {
+                panelSetting.Height += 10;
+                if (panelSetting.Size == panelSetting.MaximumSize)
+                {
+                    timerSetting.Stop();
+                    isCollapsedSetting = false;
+
+                }
+
+
+            }
+            else
+            {
+                panelSetting.Height -= 10;
+                if (panelSetting.Size == panelSetting.MinimumSize)
+                {
+                    timerSetting.Stop();
+                    isCollapsedSetting = true;
+
+                }
+            }
+        }
+
+        private void btnServerSetting_Click(object sender, EventArgs e)
+        {
+            ServerConfiguration serverConfiguration = new ServerConfiguration();
+            serverConfiguration.Show();
+        }
+
+        private void btnStockRemove_Click(object sender, EventArgs e)
+        {
+            RemoveStock removeStock = new RemoveStock(this.dgv);
+            removeStock.Show();
         }
 
         private void timerProduct_Tick(object sender, EventArgs e)

@@ -68,6 +68,12 @@
     <Compile Include="AddProduct.Designer.cs">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddStock.Designer.cs">
+      <DependentUpon>AddStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChangeCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,19 @@
     <Compile Include="ChangeCompany.Designer.cs">
       <DependentUpon>ChangeCompany.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangeProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeProduct.Designer.cs">
+      <DependentUpon>ChangeProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeStock.Designer.cs">
+      <DependentUpon>ChangeStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommandLine.cs" />
     <Compile Include="Connector.cs" />
     <Compile Include="DatabaseColumn.cs" />
     <Compile Include="MainDataGridView.cs" />
@@ -116,6 +135,24 @@
     <Compile Include="RemoveCompany.Designer.cs">
       <DependentUpon>RemoveCompany.cs</DependentUpon>
     </Compile>
+    <Compile Include="RemoveProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoveProduct.Designer.cs">
+      <DependentUpon>RemoveProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RemoveStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoveStock.Designer.cs">
+      <DependentUpon>RemoveStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScanBarcode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScanBarcode.Designer.cs">
+      <DependentUpon>ScanBarcode.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServerConfiguration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,11 +171,20 @@
     <EmbeddedResource Include="AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddStock.resx">
+      <DependentUpon>AddStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChangeCategory.resx">
       <DependentUpon>ChangeCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeCompany.resx">
       <DependentUpon>ChangeCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeProduct.resx">
+      <DependentUpon>ChangeProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeStock.resx">
+      <DependentUpon>ChangeStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -164,6 +210,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RemoveCompany.resx">
       <DependentUpon>RemoveCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoveProduct.resx">
+      <DependentUpon>RemoveProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoveStock.resx">
+      <DependentUpon>RemoveStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScanBarcode.resx">
+      <DependentUpon>ScanBarcode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServerConfiguration.resx">
       <DependentUpon>ServerConfiguration.cs</DependentUpon>

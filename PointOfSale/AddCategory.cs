@@ -17,7 +17,8 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.mDgv = dgv;
-            MainWindow.TaskBar = "open Category Add window";
+            CommandLine commandLine = new CommandLine("AddCategory");
+           
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

@@ -18,7 +18,8 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.mDgv = dgv;
-            MainWindow.TaskBar = "open Company Add window";
+            CommandLine commandLine = new CommandLine("AddCompany");
+           
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -18,7 +18,7 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.mDgv = dgv;
-            MainWindow.TaskBar = "open Category remove window";
+            CommandLine commandLine = new CommandLine("RemoveCategory");
         }
 
         private void RemoveCategory_Load(object sender, EventArgs e)

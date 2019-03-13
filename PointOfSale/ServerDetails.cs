@@ -35,5 +35,6 @@ namespace PointOfSale
             set;
         }
         bool Write();
+        
     }
 }
