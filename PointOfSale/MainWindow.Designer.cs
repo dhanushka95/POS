@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAccount = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panelStock = new System.Windows.Forms.Panel();
+            this.btnStockRemove = new System.Windows.Forms.Button();
             this.btnStockChange = new System.Windows.Forms.Button();
             this.btnStockAdd = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -59,6 +59,11 @@
             this.btnChangeProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
+            this.panelSetting = new System.Windows.Forms.Panel();
+            this.btnAccountSetting = new System.Windows.Forms.Button();
+            this.btnServerSetting = new System.Windows.Forms.Button();
+            this.btnSystemSetting = new System.Windows.Forms.Button();
+            this.btnSetting = new System.Windows.Forms.Button();
             this.timerStock = new System.Windows.Forms.Timer(this.components);
             this.timerCompany = new System.Windows.Forms.Timer(this.components);
             this.timerCategory = new System.Windows.Forms.Timer(this.components);
@@ -67,21 +72,22 @@
             this.txtTaskBar = new System.Windows.Forms.TextBox();
             this.timerTaskBar = new System.Windows.Forms.Timer(this.components);
             this.timerProduct = new System.Windows.Forms.Timer(this.components);
-            this.btnStockRemove = new System.Windows.Forms.Button();
-            this.panelSetting = new System.Windows.Forms.Panel();
-            this.btnAccountSetting = new System.Windows.Forms.Button();
-            this.btnServerSetting = new System.Windows.Forms.Button();
-            this.btnSystemSetting = new System.Windows.Forms.Button();
-            this.btnSetting = new System.Windows.Forms.Button();
             this.timerSetting = new System.Windows.Forms.Timer(this.components);
+            this.panelAccount = new System.Windows.Forms.Panel();
+            this.btnAccountRemove = new System.Windows.Forms.Button();
+            this.btnAccountChange = new System.Windows.Forms.Button();
+            this.btnAccountCreate = new System.Windows.Forms.Button();
+            this.btnAccount = new System.Windows.Forms.Button();
+            this.timerAccount = new System.Windows.Forms.Timer(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.panelStock.SuspendLayout();
             this.panelCompany.SuspendLayout();
             this.panelCategory.SuspendLayout();
             this.panelProduct.SuspendLayout();
+            this.panelSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panelBottam.SuspendLayout();
-            this.panelSetting.SuspendLayout();
+            this.panelAccount.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -89,7 +95,6 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.AliceBlue;
-            this.flowLayoutPanel1.Controls.Add(this.btnAccount);
             this.flowLayoutPanel1.Controls.Add(this.btnSearch);
             this.flowLayoutPanel1.Controls.Add(this.button4);
             this.flowLayoutPanel1.Controls.Add(this.panelStock);
@@ -97,6 +102,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panelCategory);
             this.flowLayoutPanel1.Controls.Add(this.panelProduct);
             this.flowLayoutPanel1.Controls.Add(this.panelSetting);
+            this.flowLayoutPanel1.Controls.Add(this.panelAccount);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -106,26 +112,13 @@
             this.flowLayoutPanel1.WrapContents = false;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
-            // btnAccount
-            // 
-            this.btnAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnAccount.FlatAppearance.BorderSize = 0;
-            this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccount.ForeColor = System.Drawing.Color.White;
-            this.btnAccount.Location = new System.Drawing.Point(3, 3);
-            this.btnAccount.Name = "btnAccount";
-            this.btnAccount.Size = new System.Drawing.Size(302, 61);
-            this.btnAccount.TabIndex = 1;
-            this.btnAccount.Text = "Account";
-            this.btnAccount.UseVisualStyleBackColor = false;
-            // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(3, 70);
+            this.btnSearch.Location = new System.Drawing.Point(3, 3);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(302, 61);
             this.btnSearch.TabIndex = 3;
@@ -138,7 +131,7 @@
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(3, 137);
+            this.button4.Location = new System.Drawing.Point(3, 70);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(302, 61);
             this.button4.TabIndex = 4;
@@ -151,12 +144,28 @@
             this.panelStock.Controls.Add(this.btnStockChange);
             this.panelStock.Controls.Add(this.btnStockAdd);
             this.panelStock.Controls.Add(this.button5);
-            this.panelStock.Location = new System.Drawing.Point(3, 204);
+            this.panelStock.Location = new System.Drawing.Point(3, 137);
             this.panelStock.MaximumSize = new System.Drawing.Size(302, 180);
             this.panelStock.MinimumSize = new System.Drawing.Size(302, 62);
             this.panelStock.Name = "panelStock";
             this.panelStock.Size = new System.Drawing.Size(302, 62);
             this.panelStock.TabIndex = 1;
+            // 
+            // btnStockRemove
+            // 
+            this.btnStockRemove.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnStockRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStockRemove.FlatAppearance.BorderSize = 0;
+            this.btnStockRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockRemove.ForeColor = System.Drawing.Color.White;
+            this.btnStockRemove.Location = new System.Drawing.Point(0, 142);
+            this.btnStockRemove.Name = "btnStockRemove";
+            this.btnStockRemove.Size = new System.Drawing.Size(302, 40);
+            this.btnStockRemove.TabIndex = 8;
+            this.btnStockRemove.Text = "Remove";
+            this.btnStockRemove.UseVisualStyleBackColor = false;
+            this.btnStockRemove.Click += new System.EventHandler(this.btnStockRemove_Click);
             // 
             // btnStockChange
             // 
@@ -212,7 +221,7 @@
             this.panelCompany.Controls.Add(this.btnCompanyRemove);
             this.panelCompany.Controls.Add(this.btnCompanyAdd);
             this.panelCompany.Controls.Add(this.btnCompany);
-            this.panelCompany.Location = new System.Drawing.Point(3, 272);
+            this.panelCompany.Location = new System.Drawing.Point(3, 205);
             this.panelCompany.MaximumSize = new System.Drawing.Size(302, 216);
             this.panelCompany.MinimumSize = new System.Drawing.Size(302, 62);
             this.panelCompany.Name = "panelCompany";
@@ -304,7 +313,7 @@
             this.panelCategory.Controls.Add(this.btnChangeCategory);
             this.panelCategory.Controls.Add(this.btnAddCategory);
             this.panelCategory.Controls.Add(this.btnCategory);
-            this.panelCategory.Location = new System.Drawing.Point(3, 340);
+            this.panelCategory.Location = new System.Drawing.Point(3, 273);
             this.panelCategory.MaximumSize = new System.Drawing.Size(302, 219);
             this.panelCategory.MinimumSize = new System.Drawing.Size(302, 62);
             this.panelCategory.Name = "panelCategory";
@@ -396,7 +405,7 @@
             this.panelProduct.Controls.Add(this.btnChangeProduct);
             this.panelProduct.Controls.Add(this.btnAddProduct);
             this.panelProduct.Controls.Add(this.btnProduct);
-            this.panelProduct.Location = new System.Drawing.Point(3, 408);
+            this.panelProduct.Location = new System.Drawing.Point(3, 341);
             this.panelProduct.MaximumSize = new System.Drawing.Size(302, 219);
             this.panelProduct.MinimumSize = new System.Drawing.Size(302, 62);
             this.panelProduct.Name = "panelProduct";
@@ -481,125 +490,13 @@
             this.btnProduct.UseVisualStyleBackColor = false;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
-            // timerStock
-            // 
-            this.timerStock.Interval = 15;
-            this.timerStock.Tick += new System.EventHandler(this.timerStock_Tick);
-            // 
-            // timerCompany
-            // 
-            this.timerCompany.Interval = 15;
-            this.timerCompany.Tick += new System.EventHandler(this.timerCompany_Tick);
-            // 
-            // timerCategory
-            // 
-            this.timerCategory.Interval = 15;
-            this.timerCategory.Tick += new System.EventHandler(this.timerCategory_Tick);
-            // 
-            // dgv
-            // 
-            this.dgv.AllowUserToAddRows = false;
-            this.dgv.AllowUserToDeleteRows = false;
-            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.dgv.ColumnHeadersHeight = 65;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv.EnableHeadersVisualStyles = false;
-            this.dgv.Location = new System.Drawing.Point(325, 0);
-            this.dgv.Name = "dgv";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            this.dgv.RowHeadersVisible = false;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Blue;
-            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.dgv.RowTemplate.Height = 24;
-            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(993, 673);
-            this.dgv.TabIndex = 1;
-            // 
-            // panelBottam
-            // 
-            this.panelBottam.BackColor = System.Drawing.Color.AliceBlue;
-            this.panelBottam.Controls.Add(this.txtTaskBar);
-            this.panelBottam.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottam.Location = new System.Drawing.Point(325, 621);
-            this.panelBottam.Name = "panelBottam";
-            this.panelBottam.Size = new System.Drawing.Size(993, 52);
-            this.panelBottam.TabIndex = 2;
-            // 
-            // txtTaskBar
-            // 
-            this.txtTaskBar.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtTaskBar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTaskBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTaskBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTaskBar.ForeColor = System.Drawing.Color.Black;
-            this.txtTaskBar.Location = new System.Drawing.Point(0, 0);
-            this.txtTaskBar.Multiline = true;
-            this.txtTaskBar.Name = "txtTaskBar";
-            this.txtTaskBar.ReadOnly = true;
-            this.txtTaskBar.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtTaskBar.Size = new System.Drawing.Size(993, 52);
-            this.txtTaskBar.TabIndex = 0;
-            // 
-            // timerTaskBar
-            // 
-            this.timerTaskBar.Tick += new System.EventHandler(this.timerTaskBar_Tick);
-            // 
-            // timerProduct
-            // 
-            this.timerProduct.Interval = 15;
-            this.timerProduct.Tick += new System.EventHandler(this.timerProduct_Tick);
-            // 
-            // btnStockRemove
-            // 
-            this.btnStockRemove.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnStockRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnStockRemove.FlatAppearance.BorderSize = 0;
-            this.btnStockRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockRemove.ForeColor = System.Drawing.Color.White;
-            this.btnStockRemove.Location = new System.Drawing.Point(0, 142);
-            this.btnStockRemove.Name = "btnStockRemove";
-            this.btnStockRemove.Size = new System.Drawing.Size(302, 40);
-            this.btnStockRemove.TabIndex = 8;
-            this.btnStockRemove.Text = "Remove";
-            this.btnStockRemove.UseVisualStyleBackColor = false;
-            this.btnStockRemove.Click += new System.EventHandler(this.btnStockRemove_Click);
-            // 
             // panelSetting
             // 
             this.panelSetting.Controls.Add(this.btnAccountSetting);
             this.panelSetting.Controls.Add(this.btnServerSetting);
             this.panelSetting.Controls.Add(this.btnSystemSetting);
             this.panelSetting.Controls.Add(this.btnSetting);
-            this.panelSetting.Location = new System.Drawing.Point(3, 476);
+            this.panelSetting.Location = new System.Drawing.Point(3, 409);
             this.panelSetting.MaximumSize = new System.Drawing.Size(302, 180);
             this.panelSetting.MinimumSize = new System.Drawing.Size(302, 62);
             this.panelSetting.Name = "panelSetting";
@@ -667,10 +564,185 @@
             this.btnSetting.UseVisualStyleBackColor = false;
             this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
             // 
+            // timerStock
+            // 
+            this.timerStock.Interval = 15;
+            this.timerStock.Tick += new System.EventHandler(this.timerStock_Tick);
+            // 
+            // timerCompany
+            // 
+            this.timerCompany.Interval = 15;
+            this.timerCompany.Tick += new System.EventHandler(this.timerCompany_Tick);
+            // 
+            // timerCategory
+            // 
+            this.timerCategory.Interval = 15;
+            this.timerCategory.Tick += new System.EventHandler(this.timerCategory_Tick);
+            // 
+            // dgv
+            // 
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv.ColumnHeadersHeight = 65;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv.EnableHeadersVisualStyles = false;
+            this.dgv.Location = new System.Drawing.Point(325, 0);
+            this.dgv.Name = "dgv";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgv.RowHeadersVisible = false;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Blue;
+            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgv.RowTemplate.Height = 24;
+            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv.Size = new System.Drawing.Size(993, 673);
+            this.dgv.TabIndex = 1;
+            // 
+            // panelBottam
+            // 
+            this.panelBottam.BackColor = System.Drawing.Color.AliceBlue;
+            this.panelBottam.Controls.Add(this.txtTaskBar);
+            this.panelBottam.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBottam.Location = new System.Drawing.Point(325, 621);
+            this.panelBottam.Name = "panelBottam";
+            this.panelBottam.Size = new System.Drawing.Size(993, 52);
+            this.panelBottam.TabIndex = 2;
+            // 
+            // txtTaskBar
+            // 
+            this.txtTaskBar.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtTaskBar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTaskBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTaskBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTaskBar.ForeColor = System.Drawing.Color.Black;
+            this.txtTaskBar.Location = new System.Drawing.Point(0, 0);
+            this.txtTaskBar.Multiline = true;
+            this.txtTaskBar.Name = "txtTaskBar";
+            this.txtTaskBar.ReadOnly = true;
+            this.txtTaskBar.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtTaskBar.Size = new System.Drawing.Size(993, 52);
+            this.txtTaskBar.TabIndex = 0;
+            // 
+            // timerTaskBar
+            // 
+            this.timerTaskBar.Tick += new System.EventHandler(this.timerTaskBar_Tick);
+            // 
+            // timerProduct
+            // 
+            this.timerProduct.Interval = 15;
+            this.timerProduct.Tick += new System.EventHandler(this.timerProduct_Tick);
+            // 
             // timerSetting
             // 
             this.timerSetting.Interval = 15;
             this.timerSetting.Tick += new System.EventHandler(this.timerSetting_Tick);
+            // 
+            // panelAccount
+            // 
+            this.panelAccount.Controls.Add(this.btnAccountRemove);
+            this.panelAccount.Controls.Add(this.btnAccountChange);
+            this.panelAccount.Controls.Add(this.btnAccountCreate);
+            this.panelAccount.Controls.Add(this.btnAccount);
+            this.panelAccount.Location = new System.Drawing.Point(3, 482);
+            this.panelAccount.MaximumSize = new System.Drawing.Size(302, 180);
+            this.panelAccount.MinimumSize = new System.Drawing.Size(302, 62);
+            this.panelAccount.Name = "panelAccount";
+            this.panelAccount.Size = new System.Drawing.Size(302, 162);
+            this.panelAccount.TabIndex = 9;
+            // 
+            // btnAccountRemove
+            // 
+            this.btnAccountRemove.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnAccountRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccountRemove.FlatAppearance.BorderSize = 0;
+            this.btnAccountRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccountRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccountRemove.ForeColor = System.Drawing.Color.White;
+            this.btnAccountRemove.Location = new System.Drawing.Point(0, 147);
+            this.btnAccountRemove.Name = "btnAccountRemove";
+            this.btnAccountRemove.Size = new System.Drawing.Size(302, 40);
+            this.btnAccountRemove.TabIndex = 8;
+            this.btnAccountRemove.Text = "Remove";
+            this.btnAccountRemove.UseVisualStyleBackColor = false;
+            // 
+            // btnAccountChange
+            // 
+            this.btnAccountChange.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnAccountChange.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccountChange.FlatAppearance.BorderSize = 0;
+            this.btnAccountChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccountChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccountChange.ForeColor = System.Drawing.Color.White;
+            this.btnAccountChange.Location = new System.Drawing.Point(0, 107);
+            this.btnAccountChange.Name = "btnAccountChange";
+            this.btnAccountChange.Size = new System.Drawing.Size(302, 40);
+            this.btnAccountChange.TabIndex = 7;
+            this.btnAccountChange.Text = "Change";
+            this.btnAccountChange.UseVisualStyleBackColor = false;
+            // 
+            // btnAccountCreate
+            // 
+            this.btnAccountCreate.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnAccountCreate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccountCreate.FlatAppearance.BorderSize = 0;
+            this.btnAccountCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccountCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccountCreate.ForeColor = System.Drawing.Color.White;
+            this.btnAccountCreate.Location = new System.Drawing.Point(0, 67);
+            this.btnAccountCreate.Name = "btnAccountCreate";
+            this.btnAccountCreate.Size = new System.Drawing.Size(302, 40);
+            this.btnAccountCreate.TabIndex = 6;
+            this.btnAccountCreate.Text = "Create ";
+            this.btnAccountCreate.UseVisualStyleBackColor = false;
+            this.btnAccountCreate.Click += new System.EventHandler(this.btnAccountCreate_Click);
+            // 
+            // btnAccount
+            // 
+            this.btnAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnAccount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccount.FlatAppearance.BorderSize = 0;
+            this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccount.ForeColor = System.Drawing.Color.White;
+            this.btnAccount.Location = new System.Drawing.Point(0, 0);
+            this.btnAccount.Name = "btnAccount";
+            this.btnAccount.Size = new System.Drawing.Size(302, 67);
+            this.btnAccount.TabIndex = 5;
+            this.btnAccount.Text = "Account";
+            this.btnAccount.UseVisualStyleBackColor = false;
+            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
+            // 
+            // timerAccount
+            // 
+            this.timerAccount.Interval = 15;
+            this.timerAccount.Tick += new System.EventHandler(this.timerAccount_Tick);
             // 
             // MainWindow
             // 
@@ -689,10 +761,11 @@
             this.panelCompany.ResumeLayout(false);
             this.panelCategory.ResumeLayout(false);
             this.panelProduct.ResumeLayout(false);
+            this.panelSetting.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panelBottam.ResumeLayout(false);
             this.panelBottam.PerformLayout();
-            this.panelSetting.ResumeLayout(false);
+            this.panelAccount.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -700,7 +773,6 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btnAccount;
         private System.Windows.Forms.Button btnCompany;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button button4;
@@ -740,5 +812,11 @@
         private System.Windows.Forms.Button btnSystemSetting;
         private System.Windows.Forms.Button btnSetting;
         private System.Windows.Forms.Timer timerSetting;
+        private System.Windows.Forms.Panel panelAccount;
+        private System.Windows.Forms.Button btnAccountRemove;
+        private System.Windows.Forms.Button btnAccountChange;
+        private System.Windows.Forms.Button btnAccountCreate;
+        private System.Windows.Forms.Button btnAccount;
+        private System.Windows.Forms.Timer timerAccount;
     }
 }

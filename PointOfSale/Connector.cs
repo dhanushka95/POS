@@ -37,8 +37,14 @@ namespace PointOfSale
         bool ChangeProductDetails();
         bool RemoveProductDetails();
         bool InsertStock();
+        DatabaseColumn GetStockUsingBarcode();
+        bool ChangeStockDetails();
+        bool RemoveStockDetails();
+        List<DatabaseColumn> GetCounter();
+        bool InsertUser();
         DatabaseColumn SearchCompanyList(List<DatabaseColumn> databaseColumn, string SearchCompanyName);
         DatabaseColumn SearchCategoryList(List<DatabaseColumn> databaseColumn, string SearchCategoryName);
         DatabaseColumn SearchProductList(List<DatabaseColumn> databaseColumn, string SearchCategoryName);
+        DatabaseColumn SearchCounterList(List<DatabaseColumn> databaseColumn, string SearchCounterName);
     }
 }

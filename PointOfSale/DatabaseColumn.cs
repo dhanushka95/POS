@@ -8,7 +8,7 @@ namespace PointOfSale
 {
     class DatabaseColumn
     {
-        private string _counter_id, _category_id, _company_id, _user_id, _product_id, _bill_no, _date, _discount_price, _expences, _income,_category_name,  _company_name, _company_address, _company_phone_no,  _counter_name, _location,  _barcode, _quantity, _get_price, _exp_date, _product_name, _minimum_quantity, _sell_price, _product_discount_price, _stock_date, _invoice_number, _start_quantity, _current_quantity, _user_name, _password, _type,_E_D;
+        private string _counter_id, _category_id, _company_id, _user_id, _product_id, _bill_no, _date, _discount_price, _expences, _income,_category_name,  _company_name, _company_address, _company_phone_no,  _counter_name, _location,  _barcode, _quantity, _get_price, _exp_date, _product_name, _minimum_quantity, _sell_price, _product_discount_price, _stock_date, _invoice_number, _start_quantity, _issue_quantity, _user_name, _password, _type,_E_D;
         
   
         public string barcode
@@ -146,10 +146,10 @@ namespace PointOfSale
             get { return _start_quantity; }
             set { _start_quantity = value; }
         }
-        public string current_quantity
+        public string issue_quantity
         {
-            get { return _current_quantity; }
-            set { _current_quantity = value; }
+            get { return _issue_quantity; }
+            set { _issue_quantity = value; }
         }
         public string user_name
         {

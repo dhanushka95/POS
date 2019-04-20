@@ -70,7 +70,7 @@ namespace PointOfSale
             databaseColumn.stock_date = stockDate;
             databaseColumn.invoice_number = invoiceNumber;
             databaseColumn.start_quantity = startQuantity;
-            databaseColumn.current_quantity = startQuantity;
+            databaseColumn.issue_quantity ="0";
             databaseColumn.exp_date = expDate;
             databaseColumn.get_price = getPrice;
             databaseColumn.E_D = "T";

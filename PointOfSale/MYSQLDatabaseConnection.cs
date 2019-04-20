@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Security.Cryptography;
+
 namespace PointOfSale
 {
     class MYSQLDatabaseConnection :Connector
@@ -31,7 +33,7 @@ namespace PointOfSale
                 /*build Mysql connection*/
                 MySqlConnectionStringBuilder connBuilder = new MySqlConnectionStringBuilder();
 
-                    connBuilder.Server = serverDetails.Ip;
+                    connBuilder.Server = "localhost";
                     connBuilder.UserID = serverDetails.UserName;
                     connBuilder.Database = serverDetails.dataBase;
                     connBuilder.Password = serverDetails.password;
@@ -50,12 +52,25 @@ namespace PointOfSale
             return isOpen;
             
         }
+
+        public string MD5Hash(string input)
+        {
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+            return hash.ToString();
+        }
         public Boolean CheckLogin()
         {/*check user name and password is correct*/
             try {
                 DatabaseColumn databaseColumn = new DatabaseColumn();
 
-                Query = " Select Count(*) From  user where user_name = '" + this.databaseColumn.user_name + "' and password = '" +this.databaseColumn.password + "'";
+                Query = " Select Count(*) From  user where user_name = '" + this.databaseColumn.user_name + "' and password = '" + MD5Hash(this.databaseColumn.password) + "'";
                 
                 MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -81,7 +96,29 @@ namespace PointOfSale
             }
            
         }
-     
+        public bool InsertUser()
+        {
+
+            try
+            {
+
+                Query = "INSERT INTO `user` (`user_name`, `password`, `type`,`user_id`,`counter_id`)  VALUES ('" + this.databaseColumn.user_name + "','" + MD5Hash(this.databaseColumn.password) + "','" + this.databaseColumn.type + "','" + this.databaseColumn.user_id + "','" + this.databaseColumn.counter_id + "')";
+
+                MySqlCommand command = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                mysqlConnection.Close();
+                MainWindow.TaskBar = "\n" + databaseColumn.user_name + " , " + databaseColumn.type + " , " + databaseColumn.counter_name + " -> insert complete";
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return false;
+            }
+
+        }
 
         public bool InsertCompanyDetails()
         {/*insert company details into database*/
@@ -743,7 +780,132 @@ namespace PointOfSale
             this.databaseColumn = _databaseColumn;
         }
 
-       public DatabaseColumn SearchCompanyList(List<DatabaseColumn> databaseColumn, string SearchCompanyName)
+        public DatabaseColumn GetStockUsingBarcode() {
+            DatabaseColumn databaseColumn = new DatabaseColumn();
+            try
+            {
+
+
+                Query = "SELECT stock.E_D,stock.product_id,stock.stock_date,stock.invoice_number,stock.invoice_number,stock.start_quantity,stock.issue_quantity,stock.exp_date,stock.get_price,company.company_id,category.cotegory_id,company.company_name,category.cotegory_id,category.category_name,product_details.product_name FROM `stock`,`company`,`category`,`product_details` WHERE product_details.product_id=stock.product_id AND product_details.company_id=company.company_id AND product_details.cotegory_id=category.cotegory_id AND barcode = '" + this.databaseColumn.barcode+"'";
+
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    
+                    databaseColumn.stock_date = reader["stock_date"].ToString();
+                    databaseColumn.invoice_number = reader["invoice_number"].ToString();
+                    databaseColumn.start_quantity = reader["start_quantity"].ToString();
+                    databaseColumn.issue_quantity = reader["issue_quantity"].ToString();
+                    databaseColumn.exp_date = reader["exp_date"].ToString();
+                    databaseColumn.get_price = reader["get_price"].ToString();
+                    databaseColumn.product_id = reader["product_id"].ToString();
+                    databaseColumn.product_name = reader["product_name"].ToString();
+                    databaseColumn.company_id = reader["company_id"].ToString();
+                    databaseColumn.company_name = reader["company_name"].ToString();
+                    databaseColumn.category_id = reader["cotegory_id"].ToString();
+                    databaseColumn.category_name = reader["category_name"].ToString();
+
+
+                }
+
+
+
+
+                return databaseColumn;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return databaseColumn;
+            }
+
+        }
+        public bool ChangeStockDetails() {
+            try
+            {
+                Query = " update `stock`  SET `product_id`='" + this.databaseColumn.product_id + "' ,`stock_date`='" + this.databaseColumn.stock_date + "' ,`invoice_number`='" + this.databaseColumn.invoice_number + "' ,`start_quantity`='" + this.databaseColumn.start_quantity + "' ,`exp_date`='" + this.databaseColumn.exp_date + "' ,`get_price`='" + this.databaseColumn.get_price + "'  where `barcode`='" + this.databaseColumn.barcode + "'  ";
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+                MainWindow.TaskBar = e.ToString();
+            }
+
+
+        }
+
+        public bool RemoveStockDetails()
+        {
+            try
+            {
+                Query = "delete from `stock` where  barcode='" + this.databaseColumn.barcode + "'";
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+                MainWindow.TaskBar = e.ToString();
+            }
+
+        }
+        public List<DatabaseColumn> GetCounter()
+        {
+            List<DatabaseColumn> list = new List<DatabaseColumn>();
+            try
+            {
+
+
+                Query = " Select * from `counter` ";
+
+                MySqlCommand cmd = new MySqlCommand(Query, mysqlConnection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new DatabaseColumn()
+                    {
+                        counter_name = reader["counter_name"].ToString(),
+                        counter_id = reader["counter_id"].ToString(),
+                        location = reader["location"].ToString()
+
+                    }
+
+                        );
+                }
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return list;
+            }
+
+        }
+
+        public DatabaseColumn SearchCompanyList(List<DatabaseColumn> databaseColumn, string SearchCompanyName)
         {
             DatabaseColumn result = new DatabaseColumn();
             try {
@@ -777,6 +939,20 @@ namespace PointOfSale
             try
             {
                 result = databaseColumn.Find(x => x.product_name == SearchProductName);
+                return result;
+            }
+            catch (Exception e)
+            {
+                MainWindow.TaskBar = e.ToString();
+                return result;
+            }
+        }
+        public DatabaseColumn SearchCounterList(List<DatabaseColumn> databaseColumn, string SearchCounterName)
+        {
+            DatabaseColumn result = new DatabaseColumn();
+            try
+            {
+                result = databaseColumn.Find(x => x.counter_name == SearchCounterName);
                 return result;
             }
             catch (Exception e)

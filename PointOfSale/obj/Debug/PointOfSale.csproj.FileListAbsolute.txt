@@ -42,3 +42,4 @@ D:\Program\working\C#\POS\PointOfSale\obj\Debug\PointOfSale.AddStock.resources
 D:\Program\working\C#\POS\PointOfSale\obj\Debug\PointOfSale.ScanBarcode.resources
 D:\Program\working\C#\POS\PointOfSale\obj\Debug\PointOfSale.ChangeStock.resources
 D:\Program\working\C#\POS\PointOfSale\obj\Debug\PointOfSale.RemoveStock.resources
+D:\Program\working\C#\POS\PointOfSale\obj\Debug\PointOfSale.AddAccount.resources

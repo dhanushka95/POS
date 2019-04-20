@@ -17,7 +17,7 @@ namespace PointOfSale
             var t = new Task(() => { });
             t.Start();
             t.ContinueWith(task => {
-                bool column_barcode = false, column_bill_no = false, column_user_id = false, column_category_id = false, column_category_name = false, column_company_address = false, column_company_id = false, column_company_name = false, column_company_phone_no = false, column_counter_id = false, column_counter_name = false, column_current_quantity = false, column_date = false, column_discount_price = false, column_expences = false, column_exp_date = false, column_get_price = false, column_income = false, column_invoice_number = false, column_location = false, column_minimum_quantity = false, column_user_name = false, column_product_discount_price = false, column_product_id = false, column_product_name = false, column_sell_price = false, column_start_quantity = false, column_stock_date = false, column_type = false, column_quantity = false ,column_E_D = false;
+                bool column_barcode = false, column_bill_no = false, column_user_id = false, column_category_id = false, column_category_name = false, column_company_address = false, column_company_id = false, column_company_name = false, column_company_phone_no = false, column_counter_id = false, column_counter_name = false, column_issue_quantity = false, column_date = false, column_discount_price = false, column_expences = false, column_exp_date = false, column_get_price = false, column_income = false, column_invoice_number = false, column_location = false, column_minimum_quantity = false, column_user_name = false, column_product_discount_price = false, column_product_id = false, column_product_name = false, column_sell_price = false, column_start_quantity = false, column_stock_date = false, column_type = false, column_quantity = false ,column_E_D = false;
                 foreach (DatabaseColumn column in (BindingList<DatabaseColumn>)dgv.DataSource)
                 {
 
@@ -41,8 +41,8 @@ namespace PointOfSale
                         column_counter_id = true;
                     if (!string.IsNullOrEmpty(column.counter_name))
                         column_counter_name = true;
-                    if (!string.IsNullOrEmpty(column.current_quantity))
-                        column_current_quantity = true;
+                    if (!string.IsNullOrEmpty(column.issue_quantity))
+                        column_issue_quantity = true;
                     if (!string.IsNullOrEmpty(column.date))
                         column_date = true;
                     if (!string.IsNullOrEmpty(column.discount_price))
@@ -114,7 +114,7 @@ namespace PointOfSale
                 dgv.Columns[24].Visible = column_stock_date;
                 dgv.Columns[25].Visible = column_invoice_number;
                 dgv.Columns[26].Visible = column_start_quantity;
-                dgv.Columns[27].Visible = column_current_quantity;
+                dgv.Columns[27].Visible = column_issue_quantity;
                 dgv.Columns[28].Visible = column_user_name;
                 dgv.Columns[29].Visible = false; //this is password column;
                 dgv.Columns[30].Visible = column_type;

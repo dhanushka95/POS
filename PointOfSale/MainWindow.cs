@@ -19,7 +19,7 @@ namespace PointOfSale
         }
         public static string TaskBar = "--------- Start ---------";
         private string currentTaskBar="";
-        private bool isCollapsedStock=true, isCollapsedCompany= true, isCollapsedCategory = true,isCollapsedProduct=true, isCollapsedSetting = true;
+        private bool isCollapsedStock = true, isCollapsedCompany = true, isCollapsedCategory = true, isCollapsedProduct = true, isCollapsedSetting = true, isCollapsedAccount = true;
         private void button7_Click(object sender, EventArgs e)
         {
             ChangeStock changeStock = new ChangeStock(this.dgv);
@@ -207,6 +207,43 @@ namespace PointOfSale
         {
             ServerConfiguration serverConfiguration = new ServerConfiguration();
             serverConfiguration.Show();
+        }
+
+        private void timerAccount_Tick(object sender, EventArgs e)
+        {
+            if (isCollapsedAccount)
+            {
+                panelAccount.Height += 10;
+                if (panelAccount.Size == panelAccount.MaximumSize)
+                {
+                    timerAccount.Stop();
+                    isCollapsedAccount = false;
+
+                }
+
+
+            }
+            else
+            {
+                panelAccount.Height -= 10;
+                if (panelAccount.Size == panelAccount.MinimumSize)
+                {
+                    timerAccount.Stop();
+                    isCollapsedAccount = true;
+
+                }
+            }
+        }
+
+        private void btnAccountCreate_Click(object sender, EventArgs e)
+        {
+            AddAccount addAccount = new AddAccount(this.dgv);
+            addAccount.Show();
+        }
+
+        private void btnAccount_Click(object sender, EventArgs e)
+        {
+            timerAccount.Start();
         }
 
         private void btnStockRemove_Click(object sender, EventArgs e)
